@@ -37,7 +37,7 @@ const Contact = () => {
                     Join The Club
                 </h2>
                 <p className="text-gray-400 text-lg">
-                    Whether you're a fan, a partner, or a future champion—we want to hear from you.
+                    Whether you're a fan, a partner, or a future champion - we want to hear from you.
                 </p>
             </div>
 
