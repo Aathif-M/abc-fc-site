@@ -22,7 +22,8 @@ async function optimizeImages() {
 
         try {
             await sharp(filePath)
-                .jpeg({ quality: 90, mozjpeg: true, chromaSubsampling: '4:4:4' }) // High quality, keep chroma
+                .resize(1920, null, { withoutEnlargement: true }) // Downscale huge images
+                .jpeg({ quality: 80, mozjpeg: true }) // Balanced quality
                 .toFile(tempPath);
 
             const newSize = fs.statSync(tempPath).size;

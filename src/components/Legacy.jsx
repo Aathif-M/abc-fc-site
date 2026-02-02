@@ -49,7 +49,7 @@ const Legacy = () => {
         <section ref={sectionRef} className="relative h-screen bg-brand-dark overflow-hidden">
             <div
                 ref={containerRef}
-                className="flex h-full w-[300vw]" // 300vw for 3 items
+                className="flex h-full w-[300vw] will-change-transform" // 300vw for 3 items
             >
                 {values.map((item, index) => (
                     <div key={index} className="w-[100vw] h-full flex items-center justify-center relative border-r border-neutral-900">
