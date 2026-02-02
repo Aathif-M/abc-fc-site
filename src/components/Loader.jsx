@@ -1,13 +1,14 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 
-const Loader = ({ onComplete }) => {
+const Loader = ({ onComplete, assetsLoaded }) => {
     const containerRef = useRef(null);
     const textRef = useRef(null);
+    const [introDone, setIntroDone] = useState(false);
 
     useEffect(() => {
         const tl = gsap.timeline({
-            onComplete: () => onComplete && onComplete()
+            onComplete: () => setIntroDone(true)
         });
 
         tl.fromTo(textRef.current,
@@ -16,12 +17,19 @@ const Loader = ({ onComplete }) => {
         )
             .to(textRef.current,
                 { opacity: 0, scale: 1.2, duration: 0.5, delay: 0.5, ease: "power2.in" }
-            )
-            .to(containerRef.current,
-                { yPercent: -100, duration: 0.8, ease: "power4.inOut" }
             );
+    }, []);
 
-    }, [onComplete]);
+    useEffect(() => {
+        if (introDone && assetsLoaded) {
+            gsap.to(containerRef.current, {
+                yPercent: -100,
+                duration: 0.8,
+                ease: "power4.inOut",
+                onComplete: () => onComplete && onComplete()
+            });
+        }
+    }, [introDone, assetsLoaded, onComplete]);
 
     return (
         <div ref={containerRef} className="fixed inset-0 z-50 bg-black flex items-center justify-center">
