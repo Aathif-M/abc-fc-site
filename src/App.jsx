@@ -9,6 +9,7 @@ import Footer from './components/Footer';
 import SmoothScroll from './components/SmoothScroll';
 import FloatingBall from './components/FloatingBall';
 import Goal from './components/Goal';
+import Navbar from './components/Navbar';
 
 // Assets
 import img1 from './assets/teams_celebrate.jpg';
@@ -55,13 +56,16 @@ function App() {
       <SmoothScroll>
         <FloatingBall />
         <main className="relative z-10">
-          <Hero />
-          <About />
-          <Legacy />
-          <Partner>
-            <Goal />
-          </Partner>
-          <Contact />
+          <div id="hero"><Hero /></div>
+          <Navbar />
+          <div id="about"><About /></div>
+          <div id="legacy"><Legacy /></div>
+          <div id="partner">
+            <Partner>
+              <Goal />
+            </Partner>
+          </div>
+          <div id="contact"><Contact /></div>
         </main>
 
         <Footer />
