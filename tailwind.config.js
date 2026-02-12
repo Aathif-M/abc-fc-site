@@ -12,7 +12,8 @@ export default {
         'brand-red': '#e63946',
       },
       fontFamily: {
-        sans: ['Inter', 'sans-serif'], // We might need to import a font
+        sans: ['Inter', 'sans-serif'],
+        anton: ['Anton', 'sans-serif'], // Added Anton font
       }
     },
   },

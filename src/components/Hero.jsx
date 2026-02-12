@@ -63,12 +63,12 @@ const Hero = () => {
             </div>
 
             {/* Content */}
-            <div ref={textRef} className="relative z-20 text-center px-4">
-                <h2 className="text-xl md:text-2xl font-bold tracking-[0.5em] text-brand-gold mb-4 uppercase">
+            <div ref={textRef} className="relative z-20 text-center px-4 mix-blend-difference">
+                <h2 className="text-xl md:text-2xl font-anton tracking-[0.5em] text-brand-gold mb-4 uppercase">
                     Welcome to the Arena
                 </h2>
-                <h1 className="text-6xl md:text-9xl font-black uppercase tracking-tighter leading-none italic">
-                    <div>The Pride</div>
+                <h1 className="text-8xl md:text-[12rem] font-anton uppercase tracking-tighter leading-[0.8] italic">
+                    <div className="text-white">The Pride</div>
                     <div className="text-transparent bg-clip-text bg-gradient-to-b from-white to-neutral-500">
                         Of The City
                     </div>

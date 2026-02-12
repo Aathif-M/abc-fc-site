@@ -60,9 +60,9 @@ const About = () => {
                 </div>
 
                 {/* Grid */}
-                <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-12 text-white">
+                <div ref={gridRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-8 md:gap-12 text-white relative z-20">
                     {/* Item 1 - Big Image */}
-                    <div className="lg:col-span-8 aspect-video md:aspect-auto md:h-[500px] overflow-hidden group relative rounded-xl">
+                    <div className="lg:col-span-8 aspect-video md:aspect-auto md:h-[500px] overflow-hidden group relative rounded-xl -mt-20 drop-shadow-2xl">
                         <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none" />
                         <img
                             src={teamsCelebrate}
@@ -73,10 +73,10 @@ const About = () => {
 
                     {/* Item 2 - Text */}
                     <div className="lg:col-span-4 flex flex-col justify-end space-y-6">
-                        <p className="text-xl md:text-2xl text-gray-300 font-light leading-relaxed">
+                        <p className="text-xl md:text-2xl text-gray-300 font-light leading-relaxed font-anton tracking-wide">
                             From the local streets to the global stage, we represent more than just a game. We represent a movement.
                         </p>
-                        <div className="h-40 w-full overflow-hidden group relative rounded-xl">
+                        <div className="h-40 w-full overflow-hidden group relative rounded-xl drop-shadow-2xl">
                             <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none" />
                             <img
                                 src={historicTrophy}
@@ -88,7 +88,7 @@ const About = () => {
 
                     {/* Item 3 - Text */}
                     <div className="lg:col-span-5 md:h-[400px]">
-                        <div className="h-full w-full overflow-hidden group relative rounded-xl">
+                        <div className="h-full w-full overflow-hidden group relative rounded-xl drop-shadow-2xl">
                             <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none" />
                             <img
                                 src={youthAcademy}

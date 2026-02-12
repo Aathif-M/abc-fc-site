@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import Loader from './components/Loader';
+import Preloader from './components/Preloader';
+import CustomCursor from './components/CustomCursor';
+import Marquee from './components/Marquee';
 import Hero from './components/Hero';
 import About from './components/About';
 import Legacy from './components/Legacy';
@@ -51,12 +53,17 @@ function App() {
 
   return (
     <div className="min-h-screen bg-black text-white selection:bg-brand-red selection:text-white">
-      {loading && <Loader assetsLoaded={assetsLoaded} onComplete={() => setLoading(false)} />}
+      <CustomCursor />
+      <Preloader />
+
+      <div className="noise-overlay" />
+      <div className="vignette-overlay" />
 
       <SmoothScroll>
         <FloatingBall />
         <main className="relative z-10">
           <div id="hero"><Hero /></div>
+          <Marquee />
           <Navbar />
           <div id="about"><About /></div>
           <div id="legacy"><Legacy /></div>
