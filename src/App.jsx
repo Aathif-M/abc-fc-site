@@ -9,17 +9,21 @@ import Partner from './components/Partner';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import SmoothScroll from './components/SmoothScroll';
-import FloatingBall from './components/FloatingBall';
-import Goal from './components/Goal';
 import Navbar from './components/Navbar';
+import MatchHub from './components/MatchHub';
+import MediaGrid from './components/MediaGrid';
+import LatestNews from './components/LatestNews';
+import Standings from './components/Standings';
+import Squad from './components/Squad';
+import ErrorBoundary from './components/ErrorBoundary';
 
 // Assets
-import img1 from './assets/teams_celebrate.jpg';
-import img2 from './assets/lifting_trophy.jpg';
-import img3 from './assets/team_huddle.jpg';
-import img4 from './assets/historic_trophy.jpg';
-import img5 from './assets/training_session.jpg';
-import img6 from './assets/youth_academy.jpg';
+import img1 from './assets/ipswich-team.jpg';
+import img2 from './assets/omari-hutchinson.jpg';
+import img3 from './assets/leif-davis.jpg';
+import img4 from './assets/ipswich-legacy.jpg';
+import img5 from './assets/sam-morsy.jpg';
+import img6 from './assets/kieran-mckenna.jpg';
 
 
 function App() {
@@ -52,32 +56,35 @@ function App() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-black text-white selection:bg-brand-red selection:text-white">
-      <CustomCursor />
-      <Preloader />
+    <ErrorBoundary>
+      <div className="min-h-screen bg-black text-white selection:bg-brand-red selection:text-white">
+        <CustomCursor />
+        <Preloader />
 
-      <div className="noise-overlay" />
-      <div className="vignette-overlay" />
+        <div className="noise-overlay" />
+        <div className="vignette-overlay" />
 
-      <SmoothScroll>
-        <FloatingBall />
-        <main className="relative z-10">
-          <div id="hero"><Hero /></div>
-          <Marquee />
-          <Navbar />
-          <div id="about"><About /></div>
-          <div id="legacy"><Legacy /></div>
-          <div id="partner">
-            <Partner>
-              <Goal />
-            </Partner>
-          </div>
-          <div id="contact"><Contact /></div>
-        </main>
+        <SmoothScroll>
+          <main className="relative z-10 w-full">
+            <div id="hero"><Hero /></div>
+            <MatchHub />
+            <MediaGrid />
+            <LatestNews />
+            <Marquee />
+            <Navbar />
+            <div id="about"><About /></div>
+            <Standings />
+            <div id="legacy"><Squad /></div>
+            <div id="partner">
+              <Partner />
+            </div>
+            <div id="contact"><Contact /></div>
+          </main>
 
-        <Footer />
-      </SmoothScroll>
-    </div>
+          <Footer />
+        </SmoothScroll>
+      </div>
+    </ErrorBoundary>
   );
 }
 

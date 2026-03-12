@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import confetti from 'canvas-confetti';
-import footballSvg from '../assets/football.svg';
+import footballSvg from '../assets/ipswich-ball.svg';
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -117,24 +117,24 @@ const FloatingBall = () => {
             particleCount: 100,
             spread: 70,
             origin: { x, y: 0.9 }, // Shoot from bottom
-            colors: ['#d4af37', '#ffffff', '#ff0000'] // Gold, White, Red
+            colors: ['#0333a0', '#ffffff', '#e2241b'] // Blue, White, Red
         });
     };
 
     return (
         <div
             ref={ballRef}
-            className="absolute z-[60] pointer-events-none drop-shadow-2xl"
+            className="absolute z-[60] pointer-events-none drop-shadow-2xl grayscale-0 brightness-110 contrast-125"
             style={{
                 width: '60px',
                 height: '60px',
             }}
         >
-            <img
+            {/* <img
                 src={footballSvg}
                 alt="Football"
                 className="w-full h-full object-contain"
-            />
+            /> */}
         </div>
     );
 };

@@ -2,16 +2,19 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+gsap.registerPlugin(ScrollTrigger);
+
 const Navbar = () => {
     const navRef = useRef(null);
-    const bgRef = useRef(null);
 
-    const links = [
-        { name: "Home", id: "hero" },
-        { name: "About", id: "about" },
-        { name: "Legacy", id: "legacy" },
-        { name: "Partners", id: "partner" }, // Match component name/id
-        { name: "Contact", id: "contact" },
+    const topLinks = ["Tickets", "Shop", "iFollow/TV", "Login"];
+    const mainLinks = [
+        { name: "News", id: "news" },
+        { name: "Matches", id: "matches" },
+        { name: "First Team", id: "squad" },
+        { name: "Academy", id: "academy" },
+        { name: "Club", id: "club" },
+        { name: "Fans", id: "fans" },
     ];
 
     const scrollToSection = (id) => {
@@ -24,38 +27,22 @@ const Navbar = () => {
     useEffect(() => {
         const ctx = gsap.context(() => {
             ScrollTrigger.create({
-                trigger: navRef.current,
-                start: "top top", // When top of nav hits top of viewport
-                end: 99999, // Forever
-                onUpdate: (self) => {
-                    // Start of 'stickiness'
-                    if (self.progress > 0 && self.direction >= 0) {
-                        // We rely on simple class toggle or state? 
-                        // Actually scrollTrigger.isActive works if we set end to max.
-                    }
-                },
+                trigger: document.body,
+                start: "top -50",
+                end: 99999,
                 onToggle: (self) => {
-                    // self.isActive is true when we are past the start point
-                    if (self.isActive) {
-                        gsap.to(bgRef.current, {
-                            opacity: 1,
-                            backdropFilter: "blur(12px)",
-                            duration: 0.5
-                        });
+                    if (self.isActive && navRef.current) {
                         gsap.to(navRef.current, {
-                            paddingTop: "1rem",
-                            paddingBottom: "1rem",
+                            backgroundColor: "rgba(2, 31, 89, 0.85)", // brand-navy semi-transparent
+                            backdropFilter: "blur(12px)",
+                            borderBottomColor: "rgba(255, 255, 255, 0.1)",
                             duration: 0.3
                         });
-                    } else {
-                        gsap.to(bgRef.current, {
-                            opacity: 0,
-                            backdropFilter: "blur(0px)",
-                            duration: 0.5
-                        });
+                    } else if (navRef.current) {
                         gsap.to(navRef.current, {
-                            paddingTop: "1.5rem",
-                            paddingBottom: "1.5rem",
+                            backgroundColor: "transparent",
+                            backdropFilter: "blur(0px)",
+                            borderBottomColor: "transparent",
                             duration: 0.3
                         });
                     }
@@ -68,30 +55,42 @@ const Navbar = () => {
     return (
         <nav
             ref={navRef}
-            className="sticky top-0 z-50 w-full py-6 transition-all"
+            className="fixed top-0 left-0 w-full z-50 transition-colors border-b border-transparent"
         >
-            {/* Animated Background */}
-            <div
-                ref={bgRef}
-                className="absolute inset-0 bg-black/80 opacity-0 border-b border-white/10"
-            />
+            {/* Top thin bar */}
+            <div className="bg-black/40 border-b border-white/5 backdrop-blur-sm">
+                <div className="max-w-7xl mx-auto px-4 md:px-12 flex justify-end items-center h-8">
+                    <ul className="flex space-x-6 text-[10px] font-bold uppercase tracking-widest text-gray-300">
+                        {topLinks.map((link) => (
+                            <li key={link}>
+                                <a href="#" className="hover:text-white transition-colors">{link}</a>
+                            </li>
+                        ))}
+                    </ul>
+                </div>
+            </div>
 
-            <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-12 flex justify-between items-center">
+            {/* Main bar */}
+            <div className="max-w-7xl mx-auto px-4 md:px-12 flex justify-between items-center h-20">
                 {/* Logo */}
                 <div
-                    className="text-2xl font-black tracking-tighter uppercase cursor-pointer hover:text-brand-gold transition-colors"
+                    className="cursor-pointer hover:opacity-80 transition-opacity flex-shrink-0"
                     onClick={() => scrollToSection('hero')}
                 >
-                    ABC FC
+                    <img
+                        src="https://upload.wikimedia.org/wikipedia/en/4/43/Ipswich_Town.svg"
+                        alt="Ipswich Town FC"
+                        className="h-14 w-auto drop-shadow-2xl"
+                    />
                 </div>
 
-                {/* Links */}
-                <ul className="hidden md:flex space-x-8">
-                    {links.map((link) => (
+                {/* Main Links */}
+                <ul className="hidden md:flex space-x-8 -mr-4 lg:mr-0 lg:space-x-10">
+                    {mainLinks.map((link) => (
                         <li key={link.name}>
                             <button
                                 onClick={() => scrollToSection(link.id)}
-                                className="text-xs font-bold uppercase tracking-[0.2em] hover:text-brand-gold transition-colors"
+                                className="text-sm font-bold uppercase tracking-[0.15em] hover:text-brand-gold transition-colors font-sans"
                             >
                                 {link.name}
                             </button>
@@ -99,8 +98,8 @@ const Navbar = () => {
                     ))}
                 </ul>
 
-                {/* Mobile Menu Button (Placeholder) */}
-                <button className="md:hidden text-xs font-bold uppercase tracking-widest border border-white px-4 py-2">
+                {/* Mobile Menu Button */}
+                <button className="md:hidden text-xs font-bold uppercase tracking-widest border border-white px-4 py-2 hover:bg-white hover:text-brand-navy transition-colors">
                     Menu
                 </button>
             </div>

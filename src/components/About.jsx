@@ -2,9 +2,10 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import PlaceholderImage from './PlaceholderImage';
-import teamsCelebrate from '../assets/teams_celebrate.jpg';
-import historicTrophy from '../assets/historic_trophy.jpg';
-import youthAcademy from '../assets/youth_academy.jpg';
+import LeagueTable from './LeagueTable';
+import teamsCelebrate from '../assets/ipswich-team.jpg';
+import historicTrophy from '../assets/ipswich-legacy.jpg';
+import youthAcademy from '../assets/kieran-mckenna.jpg';
 
 
 const About = () => {
@@ -55,7 +56,8 @@ const About = () => {
                 <div ref={titleRef} className="mb-16 md:mb-24">
                     <h2 className="text-sm md:text-base text-brand-red font-bold uppercase tracking-widest mb-2">Our History</h2>
                     <h3 className="text-4xl md:text-6xl font-bold max-w-2xl leading-tight">
-                        Founded on passion, <br /> driven by <span className="text-brand-gold">glory</span>.
+                        The Pride of <span className="text-brand-blue">Suffolk</span>. <br />
+                        Driven by <span className="text-brand-gold">Heritage</span>.
                     </h3>
                 </div>
 
@@ -74,7 +76,7 @@ const About = () => {
                     {/* Item 2 - Text */}
                     <div className="lg:col-span-4 flex flex-col justify-end space-y-6">
                         <p className="text-xl md:text-2xl text-gray-300 font-light leading-relaxed font-anton tracking-wide">
-                            From the local streets to the global stage, we represent more than just a game. We represent a movement.
+                            From the 1981 UEFA Cup triumph to the 2024 Premier League Return. We are back where we belong.
                         </p>
                         <div className="h-40 w-full overflow-hidden group relative rounded-xl drop-shadow-2xl">
                             <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none" />
@@ -99,10 +101,10 @@ const About = () => {
                     </div>
 
                     {/* Item 4 - Image */}
-                    <div className="lg:col-span-7 flex flex-col justify-center p-8 border border-neutral-800 rounded-xl bg-neutral-900/50">
+                    <div className="lg:col-span-7 flex flex-col justify-center p-8 border border-neutral-800 rounded-xl bg-brand-navy/50">
                         <h4 className="text-3xl font-bold mb-4">A Legacy of Winners</h4>
                         <p className="text-gray-400 mb-6">
-                            Since 1923, ABC FC has been defining what it means to be a champion.
+                            Since 1878, Ipswich Town has been defining what it means to be a champion.
                         </p>
                         <button className="self-start px-6 py-3 border border-white hover:bg-white hover:text-black transition-colors uppercase font-bold text-sm tracking-wider">
                             Read Full Story

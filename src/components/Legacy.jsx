@@ -2,9 +2,9 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import PlaceholderImage from './PlaceholderImage';
-import TrainingSession from '../assets/training_session.jpg';
-import TeamHuddle from '../assets/team_huddle.jpg';
-import LiftingTrophy from '../assets/lifting_trophy.jpg';
+import TrainingSession from '../assets/sam-morsy.jpg';
+import TeamHuddle from '../assets/leif-davis.jpg';
+import LiftingTrophy from '../assets/omari-hutchinson.jpg';
 
 const Legacy = () => {
     const sectionRef = useRef(null);

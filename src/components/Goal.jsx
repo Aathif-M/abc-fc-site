@@ -1,5 +1,5 @@
 import React, { forwardRef } from 'react';
-import goalSVG from '../assets/goal.svg';
+import goalSVG from '../assets/ipswich-goal.svg';
 
 const Goal = forwardRef((props, ref) => {
     return (

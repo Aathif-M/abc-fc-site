@@ -3,7 +3,7 @@
 
 @layer base {
   body {
-    @apply bg-black text-white overflow-x-hidden antialiased font-sans;
+    @apply bg-brand-navy text-white overflow-x-hidden antialiased font-sans;
   }
 
   h1,
@@ -60,6 +60,12 @@
 
 @theme {
   --font-anton: 'Anton', sans-serif;
+  --color-brand-dark: #0a0a0a;
+  --color-brand-blue: #0333a0;
+  --color-brand-navy: #021f59;
+  --color-brand-gold: #d4af37;
+  --color-brand-red: #e2241b;
+
   --animate-slow-zoom: slow-zoom 20s infinite alternate;
 
   @keyframes slow-zoom {
