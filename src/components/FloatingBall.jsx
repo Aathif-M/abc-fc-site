@@ -1,14 +1,11 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
-import confetti from 'canvas-confetti';
-import footballSvg from '../assets/ipswich-ball.svg';
 
 gsap.registerPlugin(ScrollTrigger);
 
 const FloatingBall = () => {
     const ballRef = useRef(null);
-    const hasScoredRef = useRef(false);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -106,20 +103,6 @@ const FloatingBall = () => {
 
         return () => ctx.revert();
     }, []);
-
-    const triggerConfetti = () => {
-        const rect = ballRef.current.getBoundingClientRect();
-        // Normalized coordinates for canvas-confetti (0 to 1)
-        const x = rect.left / window.innerWidth;
-        const y = rect.top / window.innerHeight;
-
-        confetti({
-            particleCount: 100,
-            spread: 70,
-            origin: { x, y: 0.9 }, // Shoot from bottom
-            colors: ['#0333a0', '#ffffff', '#e2241b'] // Blue, White, Red
-        });
-    };
 
     return (
         <div

@@ -2,6 +2,13 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+// Import News Images
+import { getAssetPath } from '../utils/getAsset';
+const newsFeatured = getAssetPath('news-featured-mckenna');
+const newsSmall1 = getAssetPath('news-training-ground');
+const newsSmall2 = getAssetPath('news-u21-victory');
+const newsSmall3 = getAssetPath('news-tickets');
+
 gsap.registerPlugin(ScrollTrigger);
 
 const featuredNews = {
@@ -9,7 +16,7 @@ const featuredNews = {
     title: "MCKENNA REVEALS PLANS FOR THE UPCOMING PREMIER LEAGUE CAMPAIGN",
     category: "FIRST TEAM",
     date: "12 Hours Ago",
-    image: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&q=80&w=1200",
+    image: newsFeatured,
     excerpt: "The boss sat down with Town TV to discuss pre-season preparations, squad dynamics, and the challenges awaiting in the top flight."
 };
 
@@ -19,21 +26,21 @@ const newsList = [
         title: "NEW TRAINING GROUND FACILITIES FULLY OPERATIONAL",
         category: "CLUB NEWS",
         date: "1 Day Ago",
-        image: "https://images.unsplash.com/photo-1518605368461-1e1e38ce8ba6?auto=format&fit=crop&q=80&w=600"
+        image: newsSmall1
     },
     {
         id: 3,
         title: "U21s SECURE CONVINCING WIN OVER NORWICH CITY",
         category: "ACADEMY",
         date: "2 Days Ago",
-        image: "https://images.unsplash.com/photo-1542360256-11f87968434a?auto=format&fit=crop&q=80&w=600"
+        image: newsSmall2
     },
     {
         id: 4,
         title: "TICKET INFORMATION: OPENING DAY FIXTURE",
         category: "TICKETS",
         date: "3 Days Ago",
-        image: "https://images.unsplash.com/photo-1511886929837-354d827aae26?auto=format&fit=crop&q=80&w=600"
+        image: newsSmall3
     }
 ];
 

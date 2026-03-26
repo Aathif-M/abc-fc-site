@@ -1,29 +1,28 @@
 import React, { useEffect, useState } from 'react';
-import gsap from 'gsap';
+
+// Hardcoded countdown date: Next Saturday 12:30
+// For demo purposes, we'll just set it to a future date relative to now or a fixed date
+const targetDate = new Date('2026-08-17T12:30:00');
+
+function calculateTimeLeft() {
+    const difference = +targetDate - +new Date();
+    let timeLeft = {};
+
+    if (difference > 0) {
+        timeLeft = {
+            d: Math.floor(difference / (1000 * 60 * 60 * 24)),
+            h: Math.floor((difference / (1000 * 60 * 60)) % 24),
+            m: Math.floor((difference / 1000 / 60) % 60),
+        };
+    } else {
+        // Fallback if date passed
+        timeLeft = { d: 0, h: 0, m: 0 };
+    }
+    return timeLeft;
+}
 
 const MatchCentre = () => {
-    // Hardcoded countdown date: Next Saturday 12:30
-    // For demo purposes, we'll just set it to a future date relative to now or a fixed date
-    const targetDate = new Date('2026-08-17T12:30:00');
-
     const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-
-    function calculateTimeLeft() {
-        const difference = +targetDate - +new Date();
-        let timeLeft = {};
-
-        if (difference > 0) {
-            timeLeft = {
-                d: Math.floor(difference / (1000 * 60 * 60 * 24)),
-                h: Math.floor((difference / (1000 * 60 * 60)) % 24),
-                m: Math.floor((difference / 1000 / 60) % 60),
-            };
-        } else {
-            // Fallback if date passed
-            timeLeft = { d: 0, h: 0, m: 0 };
-        }
-        return timeLeft;
-    }
 
     useEffect(() => {
         // Update every second for live countdown feel

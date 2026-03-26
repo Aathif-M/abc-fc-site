@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import Preloader from './components/Preloader';
 import CustomCursor from './components/CustomCursor';
 import Marquee from './components/Marquee';
@@ -15,21 +15,21 @@ import MediaGrid from './components/MediaGrid';
 import LatestNews from './components/LatestNews';
 import Standings from './components/Standings';
 import Squad from './components/Squad';
+import Academy from './components/Academy';
+import Fans from './components/Fans';
 import ErrorBoundary from './components/ErrorBoundary';
 
 // Assets
-import img1 from './assets/ipswich-team.jpg';
-import img2 from './assets/omari-hutchinson.jpg';
-import img3 from './assets/leif-davis.jpg';
-import img4 from './assets/ipswich-legacy.jpg';
-import img5 from './assets/sam-morsy.jpg';
-import img6 from './assets/kieran-mckenna.jpg';
+import { getAssetPath } from './utils/getAsset';
+const img1 = getAssetPath('ipswich-team');
+const img2 = getAssetPath('marcelino-nunez');
+const img3 = getAssetPath('leif-davis');
+const img4 = getAssetPath('ipswich-legacy');
+const img5 = getAssetPath('sam-morsy');
+const img6 = getAssetPath('kieran-mckenna');
 
 
 function App() {
-  const [loading, setLoading] = useState(true);
-  const [assetsLoaded, setAssetsLoaded] = useState(false);
-
   useEffect(() => {
     const preloadImages = async () => {
       const images = [img1, img2, img3, img4, img5, img6];
@@ -49,7 +49,6 @@ function App() {
       const minimumWait = new Promise(resolve => setTimeout(resolve, 2000));
 
       await Promise.all([...imagePromises, minimumWait]);
-      setAssetsLoaded(true);
     };
 
     preloadImages();
@@ -67,14 +66,18 @@ function App() {
         <SmoothScroll>
           <main className="relative z-10 w-full">
             <div id="hero"><Hero /></div>
-            <MatchHub />
+            <div id="matches">
+              <MatchHub />
+              <Standings />
+            </div>
             <MediaGrid />
-            <LatestNews />
+            <div id="news"><LatestNews /></div>
             <Marquee />
             <Navbar />
-            <div id="about"><About /></div>
-            <Standings />
-            <div id="legacy"><Squad /></div>
+            <div id="academy"><Academy /></div>
+            <div id="club"><About /></div>
+            <div id="squad"><Squad /></div>
+            <div id="fans"><Fans /></div>
             <div id="partner">
               <Partner />
             </div>

@@ -3,9 +3,10 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import PlaceholderImage from './PlaceholderImage';
 import LeagueTable from './LeagueTable';
-import teamsCelebrate from '../assets/ipswich-team.jpg';
-import historicTrophy from '../assets/ipswich-legacy.jpg';
-import youthAcademy from '../assets/kieran-mckenna.jpg';
+import { getAssetPath } from '../utils/getAsset';
+const teamsCelebrate = getAssetPath('ipswich-team');
+const historicTrophy = getAssetPath('ipswich-legacy');
+const youthAcademy = getAssetPath('kieran-mckenna-2');
 
 
 const About = () => {

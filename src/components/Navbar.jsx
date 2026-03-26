@@ -15,6 +15,7 @@ const Navbar = () => {
         { name: "Academy", id: "academy" },
         { name: "Club", id: "club" },
         { name: "Fans", id: "fans" },
+        { name: "Partners", id: "partner" },
     ];
 
     const scrollToSection = (id) => {

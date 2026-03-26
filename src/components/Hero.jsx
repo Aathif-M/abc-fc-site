@@ -3,25 +3,31 @@ import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 import FormGuide from './FormGuide';
 
+// Import Hero Slide Images
+import { getAssetPath } from '../utils/getAsset';
+const heroSlide1 = getAssetPath('hero-match-preview');
+const heroSlide2 = getAssetPath('hero-mckenna-contract');
+const heroSlide3 = getAssetPath('hero-away-kit');
+
 gsap.registerPlugin(ScrollTrigger);
 
 const stories = [
     {
         id: 1,
         headline: "MATCH PREVIEW: TOWN V LIVERPOOL",
-        image: "https://images.unsplash.com/photo-1522778119026-d647f0596c20?auto=format&fit=crop&q=80&w=2070",
+        image: heroSlide1,
         date: "24 Aug 2026"
     },
     {
         id: 2,
         headline: "MCKENNA EXTENDS CONTRACT",
-        image: "https://images.unsplash.com/photo-1555547466-218f4a1bb324?auto=format&fit=crop&q=80&w=2070",
+        image: heroSlide2,
         date: "21 Aug 2026"
     },
     {
         id: 3,
         headline: "NEW AWAY KIT REVEALED",
-        image: "https://images.unsplash.com/photo-1600250395368-b3d90fc9257e?auto=format&fit=crop&q=80&w=2070",
+        image: heroSlide3,
         date: "18 Aug 2026"
     }
 ];

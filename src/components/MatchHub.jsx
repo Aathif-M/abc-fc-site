@@ -4,27 +4,28 @@ import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
 gsap.registerPlugin(ScrollTrigger);
 
+const targetDate = new Date('2026-03-14T20:30:00');
+
+function calculateTimeLeft() {
+    const difference = +targetDate - +new Date();
+    let timeLeft = {};
+
+    if (difference > 0) {
+        timeLeft = {
+            d: Math.floor(difference / (1000 * 60 * 60 * 24)),
+            h: Math.floor((difference / (1000 * 60 * 60)) % 24),
+            m: Math.floor((difference / 1000 / 60) % 60),
+            s: Math.floor((difference / 1000) % 60),
+        };
+    } else {
+        timeLeft = { d: 0, h: 0, m: 0, s: 0 };
+    }
+    return timeLeft;
+}
+
 const MatchHub = () => {
     const hubRef = useRef(null);
-    const targetDate = new Date('2026-08-17T12:30:00');
     const [timeLeft, setTimeLeft] = useState(calculateTimeLeft());
-
-    function calculateTimeLeft() {
-        const difference = +targetDate - +new Date();
-        let timeLeft = {};
-
-        if (difference > 0) {
-            timeLeft = {
-                d: Math.floor(difference / (1000 * 60 * 60 * 24)),
-                h: Math.floor((difference / (1000 * 60 * 60)) % 24),
-                m: Math.floor((difference / 1000 / 60) % 60),
-                s: Math.floor((difference / 1000) % 60),
-            };
-        } else {
-            timeLeft = { d: 0, h: 0, m: 0, s: 0 };
-        }
-        return timeLeft;
-    }
 
     useEffect(() => {
         const timer = setInterval(() => {
@@ -71,7 +72,7 @@ const MatchHub = () => {
                 <div className="flex flex-col items-center space-y-3">
                     <span className="text-brand-gold font-anton tracking-widest text-sm uppercase">Next Fixture</span>
                     <div className="font-bold text-xl md:text-2xl tracking-wide uppercase text-center">
-                        LIVERPOOL FC (H)
+                        SHEFFIELD WED (A)
                     </div>
                     <div className="flex gap-4 border border-white/20 bg-black/20 rounded-lg p-3">
                         <div className="text-center min-w-[50px]">

@@ -1,5 +1,6 @@
 import React, { forwardRef } from 'react';
-import goalSVG from '../assets/ipswich-goal.svg';
+import { getAssetPath } from '../utils/getAsset';
+const goalSVG = getAssetPath('ipswich-goal');
 
 const Goal = forwardRef((props, ref) => {
     return (

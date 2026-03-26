@@ -5,11 +5,12 @@ import PlaceholderImage from './PlaceholderImage';
 import StatCounter from './StatCounter';
 
 // Placeholder imports - using the same ones for now, but in reality we'd pull unique ones
-import samMorsy from '../assets/sam-morsy.jpg';
-import leifDavis from '../assets/leif-davis.jpg';
-import omariHutchinson from '../assets/omari-hutchinson.jpg';
-import conorChaplin from '../assets/ipswich-team.jpg'; // Using team photo for Conor for now
-import kieranMcKenna from '../assets/kieran-mckenna.jpg';
+import { getAssetPath } from '../utils/getAsset';
+const samMorsy = getAssetPath('sam-morsy');
+const leifDavis = getAssetPath('leif-davis');
+const marcelinoNunez = getAssetPath('marcelino-nunez');
+const conorChaplin = getAssetPath('conor-chaplin'); // Using team photo for Conor for now
+const kieranMcKenna = getAssetPath('kieran-mckenna');
 
 const Squad = () => {
     const sectionRef = useRef(null);
@@ -18,7 +19,7 @@ const Squad = () => {
     const players = [
         { name: "Sam Morsy", role: "Captain / Midfielder", tagline: "The Engine", number: "5", img: samMorsy },
         { name: "Leif Davis", role: "Defender", tagline: "Assist King", number: "3", img: leifDavis },
-        { name: "Omari Hutchinson", role: "Forward", tagline: "Electric Pace", number: "20", img: omariHutchinson },
+        { name: "Marcelino Núñez", role: "Midfielder", tagline: "Electric Pace", number: "7", img: marcelinoNunez },
         { name: "Conor Chaplin", role: "Forward", tagline: "Fan Favourite", number: "10", img: conorChaplin },
         { name: "Kieran McKenna", role: "Manager", tagline: "The Architect", number: "KM", img: kieranMcKenna },
     ];

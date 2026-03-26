@@ -2,6 +2,13 @@ import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 import { ScrollTrigger } from 'gsap/ScrollTrigger';
 
+// Import Video Thumbnails
+import { getAssetPath } from '../utils/getAsset';
+const videoThumb1 = getAssetPath('video-thumb-highlights');
+const videoThumb2 = getAssetPath('video-thumb-mckenna');
+const videoThumb3 = getAssetPath('video-thumb-training');
+const videoThumb4 = getAssetPath('video-thumb-nunez');
+
 gsap.registerPlugin(ScrollTrigger);
 
 const videos = [
@@ -10,28 +17,28 @@ const videos = [
         title: "Extended Highlights: Town vs Sunderland",
         category: "HIGHLIGHTS",
         duration: "10:24",
-        image: "https://images.unsplash.com/photo-1518605368461-1e1e38ce8ba6?auto=format&fit=crop&q=80&w=800"
+        image: videoThumb1
     },
     {
         id: 2,
         title: "Manager Interview: Kieran McKenna",
         category: "INTERVIEWS",
         duration: "05:12",
-        image: "https://images.unsplash.com/photo-1542360256-11f87968434a?auto=format&fit=crop&q=80&w=800"
+        image: videoThumb2
     },
     {
         id: 3,
         title: "Behind the Scenes: Training Session",
         category: "TOWN TV",
         duration: "15:45",
-        image: "https://images.unsplash.com/photo-1511886929837-354d827aae26?auto=format&fit=crop&q=80&w=800"
+        image: videoThumb3
     },
     {
         id: 4,
-        title: "Player Profile: Omari Hutchinson",
+        title: "Player Profile: Marcelino Núñez",
         category: "FEATURES",
         duration: "08:30",
-        image: "https://images.unsplash.com/photo-1579952363873-27f3bade9f55?auto=format&fit=crop&q=80&w=800"
+        image: videoThumb4
     }
 ];
 
