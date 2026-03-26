@@ -4,20 +4,23 @@ import gsap from 'gsap';
 // Import Partner Logos
 import { getAssetPath } from '../utils/getAsset';
 const principalPartnerLogo = getAssetPath('logo-dark');
-const sponsorLogo1 = getAssetPath('sponsor-adidas');
-const sponsorLogo2 = getAssetPath('sponsor-nike');
-const sponsorLogo3 = getAssetPath('sponsor-puma');
-const sponsorLogo4 = getAssetPath('sponsor-ebay');
-const sponsorLogo5 = getAssetPath('sponsor-spotify');
-const sponsorLogo6 = getAssetPath('sponsor-paypal');
-
 const sponsors = [
-    { id: 1, name: "Adidas", logo: sponsorLogo1 },
-    { id: 2, name: "Nike", logo: sponsorLogo2 },
-    { id: 3, name: "Puma", logo: sponsorLogo3 },
-    { id: 4, name: "eBay", logo: sponsorLogo4 },
-    { id: 5, name: "Spotify", logo: sponsorLogo5 },
-    { id: 6, name: "PayPal", logo: sponsorLogo6 },
+    { id: 1, name: "MSC", logo: getAssetPath("msc") },
+    { id: 2, name: "Umbro", logo: getAssetPath("umbro") },
+    { id: 3, name: "Fleximize", logo: getAssetPath("fleximize") },
+    { id: 4, name: "University of Suffolk", logo: getAssetPath("university-of-suffolk") },
+    { id: 5, name: "Birketts", logo: getAssetPath("birketts") },
+    { id: 6, name: "Achilleus Security", logo: getAssetPath("achilleus") },
+    { id: 7, name: "Greene King", logo: getAssetPath("greene-king") },
+    { id: 8, name: "IFX Payments", logo: getAssetPath("ifx") },
+    { id: 9, name: "Unilumin", logo: getAssetPath("unilumin") },
+    { id: 10, name: "8Xbet", logo: getAssetPath("8xbet") },
+    { id: 11, name: "S&P Global", logo: getAssetPath("sp-global") },
+    { id: 12, name: "Edison House Group", logo: getAssetPath("edison-house") },
+    { id: 13, name: "Sportfive", logo: getAssetPath("sportfive") },
+    { id: 14, name: "Lucozade", logo: getAssetPath("lucozade") },
+    { id: 15, name: "Nuffield Health", logo: getAssetPath("nuffield") },
+    { id: 16, name: "MatchWornShirt", logo: getAssetPath("matchwornshirt") },
 ];
 
 const Partner = () => {
@@ -84,7 +87,7 @@ const Partner = () => {
             </div>
 
             {/* Marquee Scroller */}
-            <div className="flex overflow-hidden whitespace-nowrap opacity-60 hover:opacity-100 transition-opacity duration-500" ref={marqueeRef}>
+            <div className="flex overflow-hidden whitespace-nowrap transition-opacity duration-500" ref={marqueeRef}>
                 {/* We need two sets of the items to create a seamless loop */}
                 {[...Array(2)].map((_, i) => (
                     <div key={i} className="flex gap-16 md:gap-32 items-center px-8 md:px-16 min-w-full justify-around flex-shrink-0">
@@ -93,7 +96,8 @@ const Partner = () => {
                                 key={`${i}-${sponsor.id}`}
                                 src={sponsor.logo}
                                 alt={sponsor.name}
-                                className="h-12 w-auto object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+                                className="h-22 w-auto object-contain transition-all duration-300"
+                                onError={(e) => e.target.style.display = 'none'}
                             />
                         ))}
                     </div>
