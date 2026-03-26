@@ -6,13 +6,15 @@ Instructions:
 1. Place all your new image/video files into the `src/assets/` folder.
 2. Ensure you use the EXACT FILE NAMES (without extensions) listed below.
 3. Any of the following file formats will be accepted automatically: 
-   .png, .jpg, .jpeg, .jfif, .webp, .svg, .mp4, .webm
+   .png, .jpg, .jpeg, .jfif, .webp, .svg, .avif, .mp4, .webm
 4. Delete the old default images when you place your new ones to avoid having duplicate files.
 
+Legend:
+🟢 = Image/video currently exists in the codebase and is rendering.
+🔴 = Missing image/video (currently showing placeholder/alt text or broken).
+
 NOTE: The following files exist in src/assets/ but are NOT used by the site:
-  - logo-dark.png  (unused — safe to delete)
-  - logo-light.png (unused — safe to delete)
-  - video-thumb-hutchinson.jpg (old file, replaced by video-thumb-nunez — safe to delete)
+  - sd.webp (unused — safe to delete)
 NOTE: The club badge/crest shown in the Navbar and Footer is loaded from an 
   external URL (Wikipedia) and does NOT need a local file.
 
@@ -22,52 +24,62 @@ NOTE: The club badge/crest shown in the Navbar and Footer is loaded from an
 Location: The large scrolling images at the very top of the homepage.
 Dimensions: Recommended 1920x1080 pixels (16:9 landscape)
 -------------------------------------------------------------
-* hero-match-preview
+🟢 hero-match-preview
   - What it is: Slide 1 Background Image
   - Suggested Content: Wide action shot of players during a match.
   - Recommended Dimensions: 1920x1080 pixels (16:9 landscape)
 
-* hero-mckenna-contract
+🟢 hero-mckenna-contract
   - What it is: Slide 2 Background Image
   - Suggested Content: A portrait or impactful photo of manager Kieran McKenna.
   - Recommended Dimensions: 1920x1080 pixels (16:9 landscape)
 
-* hero-away-kit
+🟢 hero-away-kit
   - What it is: Slide 3 Background Image
   - Suggested Content: A high-quality photo of a player wearing the new Ipswich Away kit.
   - Recommended Dimensions: 1920x1080 pixels (16:9 landscape)
 
 -------------------------------------------------------------
-2. SQUAD / PLAYERS SECTION
-Location: The player profile area and Legacy section.
+2. SQUAD / ABOUT / PLAYERS SECTION
+Location: The player profile area and Legacy/About sections.
 Dimensions: Recommended 1080x1350 pixels (4:5 portrait) or high-res square
 -------------------------------------------------------------
-* sam-morsy
+🟢 sam-morsy
   - What it is: Player Profile Photo
   - Suggested Content: A clear portrait of Sam Morsy.
   - Recommended Dimensions: 1080x1350 pixels (4:5 portrait)
 
-* leif-davis
+🟢 leif-davis
   - What it is: Player Profile Photo
   - Suggested Content: A clear portrait of Leif Davis.
   - Recommended Dimensions: 1080x1350 pixels (4:5 portrait)
 
-* marcelino-nunez
+🟢 marcelino-nunez
   - What it is: Player Profile Photo
   - Suggested Content: A clear portrait of Marcelino Núñez.
   - Recommended Dimensions: 1080x1350 pixels (4:5 portrait)
 
-* ipswich-team
-  - What it is: General Team/Squad Photo
-  - Suggested Content: A squad line-up photo or team celebration.
-  - Recommended Dimensions: 1920x1080 pixels (16:9 landscape)
+🟢 conor-chaplin
+  - What it is: Player Profile Photo
+  - Suggested Content: A clear portrait of Conor Chaplin.
+  - Recommended Dimensions: 1080x1350 pixels (4:5 portrait)
 
-* kieran-mckenna
+🟢 kieran-mckenna
   - What it is: Manager Profile Photo
   - Suggested Content: A professional photo of Kieran McKenna on the touchline.
   - Recommended Dimensions: 1080x1350 pixels (4:5 portrait)
 
-* ipswich-legacy
+🟢 kieran-mckenna-2
+  - What it is: Manager / Youth Academy Photo
+  - Suggested Content: Another photo representing Kieran McKenna or the Youth Academy in the About section.
+  - Recommended Dimensions: 1080x1350 pixels (4:5 portrait)
+
+🟢 ipswich-team
+  - What it is: General Team/Squad Photo
+  - Suggested Content: A squad line-up photo or team celebration.
+  - Recommended Dimensions: 1920x1080 pixels (16:9 landscape)
+
+🟢 ipswich-legacy
   - What it is: Heritage / Legacy Photo
   - Suggested Content: An old, historic, or memorable photo representing the club's heritage (e.g., an old trophy lift).
   - Recommended Dimensions: 1920x1080 pixels (16:9 landscape)
@@ -77,22 +89,22 @@ Dimensions: Recommended 1080x1350 pixels (4:5 portrait) or high-res square
 Location: The news grid on the homepage.
 Dimensions: Recommended 1200x900 pixels for featured, 800x600 pixels for small (4:3 aspect ratio)
 -------------------------------------------------------------
-* news-featured-mckenna
+🟢 news-featured-mckenna
   - What it is: Main/Featured News Article Image
   - Suggested Content: A landscape image for a major headline (e.g., stadium shot or manager press conference).
   - Recommended Dimensions: 1200x900 pixels (4:3 landscape)
 
-* news-training-ground
+🟢 news-training-ground
   - What it is: Secondary News Image 1
   - Suggested Content: A photo related to the training ground or facilities.
   - Recommended Dimensions: 800x600 pixels (4:3 landscape)
 
-* news-u21-victory
+🟢 news-u21-victory
   - What it is: Secondary News Image 2
   - Suggested Content: Academy or under-21 team in action.
   - Recommended Dimensions: 800x600 pixels (4:3 landscape)
 
-* news-tickets
+🟢 news-tickets
   - What it is: Secondary News Image 3
   - Suggested Content: A photo of Portman Road, fans, or ticket-related imagery.
   - Recommended Dimensions: 800x600 pixels (4:3 landscape)
@@ -102,22 +114,22 @@ Dimensions: Recommended 1200x900 pixels for featured, 800x600 pixels for small (
 Location: The video thumbnail grid at the bottom.
 Dimensions: Recommended 1280x720 or 1920x1080 pixels (16:9 landscape)
 -------------------------------------------------------------
-* video-thumb-highlights
+🟢 video-thumb-highlights
   - What it is: Extended Highlights Video Thumbnail
   - Suggested Content: An action shot from a recent game (e.g., goal celebration).
   - Recommended Dimensions: 1920x1080 pixels (16:9 landscape)
 
-* video-thumb-mckenna
+🟢 video-thumb-mckenna
   - What it is: Manager Interview Thumbnail
   - Suggested Content: Kieran McKenna speaking into a microphone or in the press room.
   - Recommended Dimensions: 1920x1080 pixels (16:9 landscape)
 
-* video-thumb-training
+🟢 video-thumb-training
   - What it is: Training Session Thumbnail
   - Suggested Content: Players training on the grass.
   - Recommended Dimensions: 1920x1080 pixels (16:9 landscape)
 
-* video-thumb-nunez
+🟢 video-thumb-nunez
   - What it is: Player Feature Thumbnail
   - Suggested Content: A close-up or action shot of Marcelino Núñez.
   - Recommended Dimensions: 1920x1080 pixels (16:9 landscape)
@@ -125,31 +137,23 @@ Dimensions: Recommended 1280x720 or 1920x1080 pixels (16:9 landscape)
 -------------------------------------------------------------
 5. SPONSORS & ICONS
 Location: Sponsor ticker and decorative elements.
-Dimensions: SVGs preferred, or transparent PNGs (e.g. 500x500 pixels max)
 -------------------------------------------------------------
-(Note: SVGs are best here, but PNGs will work too)
-
-* principal-partner
-  - What it is: The main/headline sponsor
-  - Suggested Content: Logo of the primary sponsor (e.g., Ed Sheeran tour logo).
+🟢 logo-dark
+  - What it is: The main/headline sponsor (Easy Markets)
+  - Suggested Content: Logo of the primary sponsor.
   - Recommended Dimensions: High res SVG or PNG (Example widths: 500px)
 
-* sponsor-adidas
-* sponsor-nike
-* sponsor-puma
-* sponsor-ebay
-* sponsor-spotify
-* sponsor-paypal
+🔴 sponsor-adidas
+🔴 sponsor-nike
+🔴 sponsor-puma
+🔴 sponsor-ebay
+🔴 sponsor-spotify
+🔴 sponsor-paypal
   - What they are: Smaller commercial partners.
   - Suggested Content: Replace with actual partner logos (png/svg) if you wish to update them.
   - Recommended Dimensions: SVG or PNG (Example widths: 250px)
 
-* ipswich-ball
-  - What it is: A decorative football icon used during scrolling/floating.
-  - Suggested Content: A transparent `.png` or `.svg` of a football.
-  - Recommended Dimensions: Around 250x250 pixels transparent png/svg
-
-* ipswich-goal
+🔴 ipswich-goal
   - What it is: A decorative goal net icon.
   - Suggested Content: A transparent `.png` or `.svg` of a goal post.
   - Recommended Dimensions: Around 500x500 pixels transparent png/svg
@@ -158,73 +162,40 @@ Dimensions: SVGs preferred, or transparent PNGs (e.g. 500x500 pixels max)
 6. VIDEOS
 Dimensions: Recommended 1920x1080 pixels (16:9 landscape) at 1080p
 -------------------------------------------------------------
-* ipswich-hero-video
-  - What it is: Background or hero video (if used in your code).
-  - Suggested Content: A short, high-quality .mp4 or .webm file of match highlights or fan atmosphere. Use no audio for background videos.
+🟢 ipswich-hero-video
+  - What it is: Background or hero video.
+  - Suggested Content: A short, high-quality .mp4 or .webm file of match highlights or fan atmosphere. 
   - Recommended Dimensions: 1920x1080 pixels (16:9 landscape) at 1080p
-
--------------------------------------------------------------
-7. ACADEMY
-Dimensions: Recommended 1200x800 pixels (3:2 landscape)
--------------------------------------------------------------
-* academy-action
-  - What it is: Action shot of academy players in a match
-  - Recommended Dimensions: 1200x800px (3:2 landscape)
-
-* academy-u21
-  - What it is: U21 squad photo or training drill
-  - Recommended Dimensions: 1200x800px (3:2 landscape)
-
-* academy-youth
-  - What it is: Young player close-up or training session
-  - Recommended Dimensions: 1200x800px (3:2 landscape)
-
--------------------------------------------------------------
-8. FANS
-Dimensions: Recommended 1920x1080 pixels (16:9 landscape)
--------------------------------------------------------------
-* fans-portman-road
-  - What it is: Wide panoramic shot of Portman Road packed with fans
-  - Recommended Dimensions: 1920x1080px (16:9 landscape)
-
-* fans-celebration
-  - What it is: Fans celebrating a goal in the stands
-  - Recommended Dimensions: 1920x1080px (16:9 landscape)
 
 -------------------------------------------------------------
 7. ACADEMY SECTION
 Location: The new Academy highlights section.
 Dimensions: Recommended 1200x800 pixels (3:2 landscape)
 -------------------------------------------------------------
-* academy-action
-  - Media File Name: academy-action
+🔴 academy-action
   - What it is: Action shot of academy players in a match
-  - Recommended Dimensions: 1200x800 pixels (3:2 landscape)
+  - Recommended Dimensions: 1200x800px (3:2 landscape)
 
-* academy-u21
-  - Media File Name: academy-u21
+🟢 academy-u21
   - What it is: U21 squad photo or training drill
-  - Recommended Dimensions: 1200x800 pixels (3:2 landscape)
+  - Recommended Dimensions: 1200x800px (3:2 landscape)
 
-* academy-youth
-  - Media File Name: academy-youth
+🟢 academy-youth
   - What it is: Young player close-up or training session
-  - Recommended Dimensions: 1200x800 pixels (3:2 landscape)
+  - Recommended Dimensions: 1200x800px (3:2 landscape)
 
 -------------------------------------------------------------
 8. FANS SECTION
 Location: The new Fans community section.
 Dimensions: Recommended 1920x1080 pixels (16:9 landscape)
 -------------------------------------------------------------
-* fans-portman-road
-  - Media File Name: fans-portman-road
+🔴 fans-portman-road
   - What it is: Wide panoramic shot of Portman Road packed with fans
-  - Recommended Dimensions: 1920x1080 pixels (16:9 landscape)
+  - Recommended Dimensions: 1920x1080px (16:9 landscape)
 
-* fans-celebration
-  - Media File Name: fans-celebration
+🔴 fans-celebration
   - What it is: Fans celebrating a goal in the stands
-  - Recommended Dimensions: 1920x1080 pixels (16:9 landscape)
+  - Recommended Dimensions: 1920x1080px (16:9 landscape)
 
 =============================================================
 FINAL CHECK:
