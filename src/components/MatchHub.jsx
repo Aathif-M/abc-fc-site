@@ -260,22 +260,22 @@ const MatchHub = () => {
                 </div>
 
                 {/* Bottom Widgets Row */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 border-t border-white/30 pt-8 mt-4">
-                    <div className="bg-black/40 p-6 rounded-xl border border-white/20 shadow-lg">
+                <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 border-t border-white/30 pt-8 mt-4">
+                    <div className="lg:col-span-5 bg-black/40 p-6 rounded-xl border border-white/20 shadow-lg">
                         <h3 className="text-brand-gold font-anton tracking-widest text-sm uppercase mb-6 flex items-center gap-2 drop-shadow-md">
                             <span className="w-2 h-2 rounded-full bg-brand-gold animate-pulse"></span>
                             Match Data
                         </h3>
                         {/* Raw Scoreaxis Widget Container */}
-                        <div className="w-full bg-black/20 rounded-md p-1 shadow-inner border border-white/5" ref={widgetRef}></div>
+                        <div className="w-full bg-black/20 rounded-md p-1 shadow-inner border border-white/5 overflow-hidden" ref={widgetRef}></div>
                     </div>
 
-                    <div className="bg-black/40 p-6 rounded-xl border border-white/20 shadow-lg">
+                    <div className="lg:col-span-7 bg-black/40 p-6 flex flex-col rounded-xl border border-white/20 shadow-lg">
                         <h3 className="text-brand-gold font-anton tracking-widest text-sm uppercase mb-6 flex items-center gap-2 drop-shadow-md">
                             <span className="w-2 h-2 rounded-full bg-brand-gold"></span>
                             Current Standings
                         </h3>
-                        <div className="w-full bg-black/20 rounded-md p-1 shadow-inner border border-white/5" ref={standingsWidgetRef}></div>
+                        <div className="w-full flex-grow bg-black/20 rounded-md p-1 shadow-inner border border-white/5 overflow-hidden" ref={standingsWidgetRef}></div>
                     </div>
                 </div>
 
