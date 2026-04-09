@@ -37,9 +37,9 @@ const Preloader = () => {
         >
             <h1
                 ref={textRef}
-                className="text-white font-anton text-6xl md:text-9xl uppercase tracking-tighter"
+                className="text-white font-anton text-4xl md:text-7xl uppercase tracking-tighter text-center px-4"
             >
-                ABC FC
+                Ipswich Town FC
             </h1>
         </div>
     );

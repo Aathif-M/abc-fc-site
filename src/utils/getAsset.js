@@ -1,5 +1,5 @@
 // Dynamically import all possible media extensions in the assets directory
-const assets = import.meta.glob('../assets/**/*.{png,jpg,jpeg,jfif,webp,mp4,webm,svg,avif}', { eager: true });
+const assets = import.meta.glob('../assets/**/*.{png,jpg,jpeg,jfif,webp,mp4,webm,mov,svg,avif,gif,ico}', { eager: true });
 
 /**
  * Retrieves the compiled path for a given asset base name regardless of its extension.

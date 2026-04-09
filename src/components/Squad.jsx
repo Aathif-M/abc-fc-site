@@ -50,13 +50,13 @@ const Squad = () => {
 
     return (
         <section ref={sectionRef} className="relative h-screen bg-brand-navy overflow-hidden">
-            <div className="absolute top-8 left-8 md:left-20 z-20">
+            <div className="absolute top-32 left-8 md:top-40 md:left-20 z-20">
                 <h2 className="text-brand-gold text-sm font-bold tracking-[0.3em] uppercase mb-2">First Team Stars</h2>
                 <h3 className="text-white font-anton text-4xl md:text-6xl uppercase tracking-tighter">The Squad</h3>
             </div>
 
             {/* Stat Counters Overlay */}
-            <div className="absolute top-8 right-8 md:right-20 z-20 flex gap-8 hidden md:flex">
+            <div className="absolute top-32 right-8 md:top-40 md:right-20 z-20 flex gap-8 hidden md:flex">
                 <StatCounter label="Goals Scored" value={45} />
                 <StatCounter label="Points" value={82} />
             </div>

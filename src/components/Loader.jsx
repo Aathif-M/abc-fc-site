@@ -33,8 +33,8 @@ const Loader = ({ onComplete, assetsLoaded }) => {
 
     return (
         <div ref={containerRef} className="fixed inset-0 z-50 bg-black flex items-center justify-center">
-            <h1 ref={textRef} className="text-6xl md:text-8xl font-black text-white tracking-tighter">
-                ABC FC
+            <h1 ref={textRef} className="text-4xl md:text-7xl font-black text-white tracking-tighter text-center px-4">
+                Ipswich Town FC
             </h1>
         </div>
     );

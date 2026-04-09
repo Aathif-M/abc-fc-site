@@ -81,7 +81,7 @@ const Navbar = () => {
                     <img
                         src="https://upload.wikimedia.org/wikipedia/en/4/43/Ipswich_Town.svg"
                         alt="Ipswich Town FC"
-                        className="h-14 w-auto drop-shadow-2xl"
+                        className="h-16 w-auto drop-shadow-2xl"
                     />
                 </div>
 
