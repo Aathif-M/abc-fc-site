@@ -126,13 +126,21 @@ const MatchHub = () => {
         return () => clearInterval(timer);
     }, [matchData.nextMatch.date]);
 
+    const standingsWidgetRef = useRef(null);
+
     // Raw Scoreaxis Widget Execution
     useEffect(() => {
         if (widgetRef.current && widgetRef.current.children.length === 0) {
             // Contextual Fragment powerfully parses HTML precisely as the browser would natively, correctly initiating embedded <script> tags.
-            const rawHTML = `<div id="widget-d7wtmn8lld6n" class="scoreaxis-widget" style="width: auto;height: auto;font-size: 14px;background-color: #ffffff;color: #141416;border: 1px solid;border-color: #ecf1f7;overflow: auto;"><script src="https://widgets.scoreaxis.com/api/football/live-match/685e3864137246404c0409c2?widgetId=d7wtmn8lld6n&lang=en&lineupsBlock=1&eventsBlock=1&statsBlock=1&links=1&font=heebo&fontSize=14&rowDensity=100&widgetWidth=auto&widgetHeight=auto&bodyColor=%23ffffff&textColor=%23141416&linkColor=%23141416&borderColor=%23ecf1f7&tabColor=%23f3f8fd" async></script><div class="widget-main-link" style="padding: 6px 12px;font-weight: 500;">Live data by <a href="https://www.scoreaxis.com/" style="color: inherit;">Scoreaxis</a></div></div>`;
+            const rawHTML = `<div id="widget-d7wtmn8lld6n" class="scoreaxis-widget" style="width: auto;height: auto;font-size: 14px;background-color: transparent;color: #ffffff;border: none;overflow: auto;"><script src="https://widgets.scoreaxis.com/api/football/live-match/685e3864137246404c0409c2?widgetId=d7wtmn8lld6n&lang=en&lineupsBlock=1&eventsBlock=1&statsBlock=1&links=1&font=heebo&fontSize=14&rowDensity=100&widgetWidth=auto&widgetHeight=auto&bodyColor=transparent&textColor=%23ffffff&linkColor=%23ffffff&borderColor=rgba(255,255,255,0.1)&tabColor=transparent" async></script><div class="widget-main-link" style="padding: 6px 12px;font-weight: 500;">Live data by <a href="https://www.scoreaxis.com/" style="color: inherit;">Scoreaxis</a></div></div>`;
             const fragment = document.createRange().createContextualFragment(rawHTML);
             widgetRef.current.appendChild(fragment);
+        }
+
+        if (standingsWidgetRef.current && standingsWidgetRef.current.children.length === 0) {
+            const rawHTMLStandings = `<div id="widget-9dfdmnrbjujt" class="scoreaxis-widget" style="width: auto;height: auto;font-size: 14px;background-color: transparent;color: #ffffff;border: none;overflow: auto;"><script src="https://widgets.scoreaxis.com/api/football/league-table/623226651944015a9f657040?widgetId=9dfdmnrbjujt&lang=en&teamLogo=1&tableLines=0&homeAway=1&header=1&position=1&goals=1&gamesCount=1&diff=1&winCount=1&drawCount=1&loseCount=1&lastGames=1&points=1&teamsLimit=all&links=1&font=heebo&fontSize=14&rowDensity=100&widgetWidth=auto&widgetHeight=auto&bodyColor=transparent&textColor=%23ffffff&linkColor=%23ffffff&borderColor=rgba(255,255,255,0.1)&tabColor=transparent" async></script><div class="widget-main-link" style="padding: 6px 12px;font-weight: 500;">Live data by <a href="https://www.scoreaxis.com/" style="color: inherit;">Scoreaxis</a></div></div>`;
+            const fragmentStandings = document.createRange().createContextualFragment(rawHTMLStandings);
+            standingsWidgetRef.current.appendChild(fragmentStandings);
         }
     }, []);
 
@@ -267,16 +275,7 @@ const MatchHub = () => {
                             <span className="w-2 h-2 rounded-full bg-brand-gold"></span>
                             Current Standings
                         </h3>
-                        <div 
-                            id="wg-api-football-standings" 
-                            data-host="v3.football.api-sports.io" 
-                            data-key="YOUR_API_KEY" 
-                            data-team="YOUR_IPSWICH_ID" 
-                            data-league="39"
-                            data-season="2024"
-                            data-theme="dark" 
-                            className="wg_loader">
-                        </div>
+                        <div className="w-full" ref={standingsWidgetRef}></div>
                     </div>
                 </div>
 
