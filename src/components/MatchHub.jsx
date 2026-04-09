@@ -165,17 +165,17 @@ const MatchHub = () => {
     }, []);
 
     return (
-        <section ref={hubRef} className="w-full bg-[#004E98] py-8 md:py-12 text-white relative z-20 shadow-2xl">
+        <section ref={hubRef} className="w-full bg-[#021A38] py-8 md:py-12 text-white relative z-20 shadow-2xl border-t border-white/10">
             <div className="max-w-7xl mx-auto px-4 md:px-12 flex flex-col gap-10">
                 
                 {/* Top Statistics Row */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
                     
                     {/* Left: Last Result */}
-                    <div className="flex flex-col border-b md:border-b-0 md:border-r border-white/20 pb-6 md:pb-0 md:pr-8 w-full font-sans max-w-sm mx-auto md:mx-0">
-                        <div className="flex w-full justify-between text-white/50 text-xs sm:text-sm mb-6 font-medium">
-                            <span className="text-[#8ab4f8]">{matchData.lastMatch.competition} <span className="text-white/30 px-1">•</span> {matchData.lastMatch.date}</span>
-                            <span>Full-time</span>
+                    <div className="flex flex-col border-b md:border-b-0 md:border-r border-white/30 pb-6 md:pb-0 md:pr-8 w-full font-sans max-w-sm mx-auto md:mx-0">
+                        <div className="flex w-full justify-between text-white/80 text-xs sm:text-sm mb-6 font-medium">
+                            <span className="text-[#8ab4f8] drop-shadow-sm">{matchData.lastMatch.competition} <span className="text-white/50 px-1">•</span> {matchData.lastMatch.date}</span>
+                            <span className="text-white font-bold drop-shadow-sm">Full-time</span>
                         </div>
                         
                         <div className="flex w-full items-center justify-between px-2">
@@ -187,9 +187,9 @@ const MatchHub = () => {
                             
                             {/* Score */}
                             <div className="flex items-center justify-center gap-3 md:gap-6">
-                                <span className="text-4xl md:text-5xl font-normal leading-none tracking-tighter">{matchData.lastMatch.score.split('-')[0]?.trim()}</span>
-                                <span className="text-3xl font-light text-white/40 leading-none pb-2">-</span>
-                                <span className="text-4xl md:text-5xl font-normal leading-none tracking-tighter">{matchData.lastMatch.score.split('-')[1]?.trim()}</span>
+                                <span className="text-4xl md:text-5xl font-bold leading-none tracking-tighter drop-shadow-md">{matchData.lastMatch.score.split('-')[0]?.trim()}</span>
+                                <span className="text-3xl font-light text-white/70 leading-none pb-2">-</span>
+                                <span className="text-4xl md:text-5xl font-bold leading-none tracking-tighter drop-shadow-md">{matchData.lastMatch.score.split('-')[1]?.trim()}</span>
                             </div>
 
                             {/* Away Team */}
@@ -201,12 +201,12 @@ const MatchHub = () => {
 
                         {/* Goalscorers (Only rendered if present in fallback currently) */}
                         {matchData.lastMatch.scorers.home && (
-                            <div className="flex w-full justify-between items-center text-xs sm:text-sm text-white/70 mt-8 pt-4 border-t border-white/10">
-                                <span>{matchData.lastMatch.scorers.home}</span>
-                                <svg className="w-4 h-4 text-white/40" viewBox="0 0 24 24" fill="currentColor">
+                            <div className="flex w-full justify-between items-center text-xs sm:text-sm text-white/90 mt-8 pt-4 border-t border-white/20">
+                                <span className="font-medium drop-shadow-sm">{matchData.lastMatch.scorers.home}</span>
+                                <svg className="w-4 h-4 text-brand-gold drop-shadow-sm" viewBox="0 0 24 24" fill="currentColor">
                                     <path d="M12 2A10 10 0 1 0 22 12 10 10 0 0 0 12 2Zm0 2a8 8 0 0 1 4.54 1.4A8.72 8.72 0 0 0 12 6.5a8.72 8.72 0 0 0-4.54-1.1A8 8 0 0 1 12 4Zm-6.57 3A8.61 8.61 0 0 1 9.8 8.1 8.71 8.71 0 0 0 10 11.5a8.7 8.7 0 0 0-4.7 1.8A8 8 0 0 1 5.43 7Zm2.27 10.6A8.7 8.7 0 0 0 11 15.5V13a8.7 8.7 0 0 0-4.2-1 8.71 8.71 0 0 0-1.8 4.6 8 8 0 0 1 2.7 1ZM12 20a8 8 0 0 1-2.5-.4 8.6 8.6 0 0 1 2.5-3.1 8.6 8.6 0 0 1 2.5 3.1A8 8 0 0 1 12 20Zm4.3-2.4a8.71 8.71 0 0 0-1.8-4.6A8.7 8.7 0 0 0 13 13v2.5a8.7 8.7 0 0 0 3.3 2.1ZM18.7 13.3A8.7 8.7 0 0 0 14 11.5a8.71 8.71 0 0 0 .2-3.4 8.61 8.61 0 0 1 4.37-1.1A8 8 0 0 1 18.7 13.3Z"/>
                                 </svg>
-                                <span>{matchData.lastMatch.scorers.away}</span>
+                                <span className="font-medium drop-shadow-sm">{matchData.lastMatch.scorers.away}</span>
                             </div>
                         )}
                     </div>
@@ -221,37 +221,37 @@ const MatchHub = () => {
                             </div>
                             <span className="text-sm font-bold text-brand-gold font-sans tracking-normal mt-1 uppercase">{matchData.nextMatch.dateLabel}</span>
                         </div>
-                        <div className="flex gap-4 border border-white/20 bg-black/20 rounded-lg p-3">
+                        <div className="flex gap-4 border border-white/30 bg-black/40 rounded-lg p-3 shadow-md">
                             <div className="text-center min-w-[50px]">
-                                <span className="block text-2xl font-anton tracking-wider">{timeLeft.d}</span>
-                                <span className="text-[0.6rem] uppercase tracking-widest text-gray-300">Days</span>
+                                <span className="block text-2xl font-anton tracking-wider text-white">{timeLeft.d}</span>
+                                <span className="text-[0.6rem] uppercase tracking-widest text-white/80">Days</span>
                             </div>
                             <div className="text-center min-w-[50px]">
-                                <span className="block text-2xl font-anton tracking-wider">{timeLeft.h}</span>
-                                <span className="text-[0.6rem] uppercase tracking-widest text-gray-300">Hrs</span>
+                                <span className="block text-2xl font-anton tracking-wider text-white">{timeLeft.h}</span>
+                                <span className="text-[0.6rem] uppercase tracking-widest text-white/80">Hrs</span>
                             </div>
                             <div className="text-center min-w-[50px]">
-                                <span className="block text-2xl font-anton tracking-wider">{timeLeft.m}</span>
-                                <span className="text-[0.6rem] uppercase tracking-widest text-gray-300">Mins</span>
+                                <span className="block text-2xl font-anton tracking-wider text-white">{timeLeft.m}</span>
+                                <span className="text-[0.6rem] uppercase tracking-widest text-white/80">Mins</span>
                             </div>
                             <div className="text-center min-w-[50px]">
-                                <span className="block text-2xl font-anton tracking-wider">{timeLeft.s}</span>
-                                <span className="text-[0.6rem] uppercase tracking-widest text-gray-300">Secs</span>
+                                <span className="block text-2xl font-anton tracking-wider text-white">{timeLeft.s}</span>
+                                <span className="text-[0.6rem] uppercase tracking-widest text-white/80">Secs</span>
                             </div>
                         </div>
                     </div>
 
                     {/* Right: Upcoming */}
-                    <div className="flex flex-col items-center md:items-start space-y-2 border-t md:border-t-0 md:border-l border-white/20 pt-6 md:pt-0 md:pl-8 w-full relative h-[100%]">
+                    <div className="flex flex-col items-center md:items-start space-y-2 border-t md:border-t-0 md:border-l border-white/30 pt-6 md:pt-0 md:pl-8 w-full relative h-[100%]">
                         <span className="text-brand-gold font-anton tracking-widest text-sm uppercase mb-3">Upcoming Focus</span>
                         <div className="flex flex-col w-full gap-3 font-sans h-full justify-center">
                             {matchData.upcoming.map((match, idx) => (
-                                <div key={idx} className="flex justify-between items-center bg-black/20 px-3 py-3 md:px-4 rounded-lg border border-white/5 hover:border-white/30 transition-colors cursor-pointer group shadow-inner">
+                                <div key={idx} className="flex justify-between items-center bg-black/40 px-3 py-3 md:px-4 rounded-lg border border-white/10 hover:border-brand-gold transition-colors cursor-pointer group shadow-md">
                                     <div className="flex items-center gap-3">
                                         <img src={match.logo} alt={match.name} className="w-6 h-6 md:w-7 md:h-7 object-contain drop-shadow-md" />
-                                        <span className="font-bold group-hover:text-brand-gold transition-colors text-sm md:text-base">{match.name}</span>
+                                        <span className="font-bold text-white group-hover:text-brand-gold transition-colors text-sm md:text-base">{match.name}</span>
                                     </div>
-                                    <span className="text-xs text-white/60 bg-black/40 px-2 py-1 rounded whitespace-nowrap ml-2 uppercase">{match.date}</span>
+                                    <span className="text-xs text-white bg-black/60 px-2 py-1 rounded whitespace-nowrap ml-2 uppercase shadow-inner">{match.date}</span>
                                 </div>
                             ))}
                         </div>
@@ -260,22 +260,22 @@ const MatchHub = () => {
                 </div>
 
                 {/* Bottom Widgets Row */}
-                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 border-t border-white/20 pt-8 mt-4">
-                    <div className="bg-black/20 p-6 rounded-xl border border-white/10 shadow-inner">
-                        <h3 className="text-brand-gold font-anton tracking-widest text-sm uppercase mb-6 flex items-center gap-2">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 border-t border-white/30 pt-8 mt-4">
+                    <div className="bg-black/40 p-6 rounded-xl border border-white/20 shadow-lg">
+                        <h3 className="text-brand-gold font-anton tracking-widest text-sm uppercase mb-6 flex items-center gap-2 drop-shadow-md">
                             <span className="w-2 h-2 rounded-full bg-brand-gold animate-pulse"></span>
                             Match Data
                         </h3>
                         {/* Raw Scoreaxis Widget Container */}
-                        <div className="w-full" ref={widgetRef}></div>
+                        <div className="w-full bg-black/20 rounded-md p-1 shadow-inner border border-white/5" ref={widgetRef}></div>
                     </div>
 
-                    <div className="bg-black/20 p-6 rounded-xl border border-white/10 shadow-inner">
-                        <h3 className="text-brand-gold font-anton tracking-widest text-sm uppercase mb-6 flex items-center gap-2">
+                    <div className="bg-black/40 p-6 rounded-xl border border-white/20 shadow-lg">
+                        <h3 className="text-brand-gold font-anton tracking-widest text-sm uppercase mb-6 flex items-center gap-2 drop-shadow-md">
                             <span className="w-2 h-2 rounded-full bg-brand-gold"></span>
                             Current Standings
                         </h3>
-                        <div className="w-full" ref={standingsWidgetRef}></div>
+                        <div className="w-full bg-black/20 rounded-md p-1 shadow-inner border border-white/5" ref={standingsWidgetRef}></div>
                     </div>
                 </div>
 
