@@ -44,7 +44,7 @@ const MatchHub = () => {
     useEffect(() => {
         const API_KEY = 'YOUR_API_KEY';
         const IPSWICH_ID = 'YOUR_IPSWICH_ID';
-        
+
         // Skip fetch if placeholder key is used to prevent layout breakings
         if (API_KEY === 'YOUR_API_KEY' || IPSWICH_ID === 'YOUR_IPSWICH_ID') return;
 
@@ -55,7 +55,7 @@ const MatchHub = () => {
                     headers: { 'x-apisports-key': API_KEY }
                 });
                 const lastData = await lastRes.json();
-                
+
                 // Fetch next 3 matches
                 const nextRes = await fetch(`https://v3.football.api-sports.io/fixtures?team=${IPSWICH_ID}&next=3`, {
                     headers: { 'x-apisports-key': API_KEY }
@@ -110,7 +110,7 @@ const MatchHub = () => {
         const timer = setInterval(() => {
             const target = new Date(matchData.nextMatch.date);
             const difference = +target - +new Date();
-            
+
             if (difference > 0) {
                 setTimeLeft({
                     d: Math.floor(difference / (1000 * 60 * 60 * 24)),
@@ -132,13 +132,13 @@ const MatchHub = () => {
     useEffect(() => {
         if (widgetRef.current && widgetRef.current.children.length === 0) {
             // Contextual Fragment powerfully parses HTML precisely as the browser would natively, correctly initiating embedded <script> tags.
-            const rawHTML = `<div id="widget-d7wtmn8lld6n" class="scoreaxis-widget" style="width: auto;height: auto;font-size: 14px;background-color: transparent;color: #ffffff;border: none;overflow: auto;"><script src="https://widgets.scoreaxis.com/api/football/live-match/685e3864137246404c0409c2?widgetId=d7wtmn8lld6n&lang=en&lineupsBlock=1&eventsBlock=1&statsBlock=1&links=1&font=heebo&fontSize=14&rowDensity=100&widgetWidth=auto&widgetHeight=auto&bodyColor=%2301152a&textColor=%23ffffff&linkColor=%23ffffff&borderColor=rgba(255,255,255,0.1)&tabColor=%2301152a" async></script><div class="widget-main-link" style="padding: 6px 12px;font-weight: 500;">Live data by <a href="https://www.scoreaxis.com/" style="color: inherit;">Scoreaxis</a></div></div>`;
+            const rawHTML = `<div id="widget-d7wtmn8lld6n" class="scoreaxis-widget" style="width: auto;height: auto;font-size: 14px;background-color: transparent;color: #ffffff;border: none;overflow: auto;"><script src="https://widgets.scoreaxis.com/api/football/live-match/685e3864137246404c0409c2?widgetId=d7wtmn8lld6n&lang=en&lineupsBlock=1&eventsBlock=1&statsBlock=1&links=1&font=heebo&fontSize=14&rowDensity=100&widgetWidth=auto&widgetHeight=auto&bodyColor=%2301152a&textColor=%23ffffff&linkColor=%23ffffff&borderColor=rgba(255,255,255,0.1)&tabColor=%2301152a" async></script><div class="widget-main-link" style="padding: 6px 12px;font-weight: 500;display:none;">Live data by <a href="https://www.scoreaxis.com/" style="color: inherit;">Scoreaxis</a></div></div>`;
             const fragment = document.createRange().createContextualFragment(rawHTML);
             widgetRef.current.appendChild(fragment);
         }
 
         if (standingsWidgetRef.current && standingsWidgetRef.current.children.length === 0) {
-            const rawHTMLStandings = `<div id="widget-9dfdmnrbjujt" class="scoreaxis-widget" style="width: auto;height: auto;font-size: 14px;background-color: transparent;color: #ffffff;border: none;overflow: auto;"><script src="https://widgets.scoreaxis.com/api/football/league-table/623226651944015a9f657040?widgetId=9dfdmnrbjujt&lang=en&teamLogo=1&tableLines=0&homeAway=1&header=1&position=1&goals=1&gamesCount=1&diff=1&winCount=1&drawCount=1&loseCount=1&lastGames=1&points=1&teamsLimit=all&links=1&font=heebo&fontSize=14&rowDensity=100&widgetWidth=auto&widgetHeight=auto&bodyColor=%2301152a&textColor=%23ffffff&linkColor=%23ffffff&borderColor=rgba(255,255,255,0.1)&tabColor=%2301152a" async></script><div class="widget-main-link" style="padding: 6px 12px;font-weight: 500;">Live data by <a href="https://www.scoreaxis.com/" style="color: inherit;">Scoreaxis</a></div></div>`;
+            const rawHTMLStandings = `<div id="widget-9dfdmnrbjujt" class="scoreaxis-widget" style="width: auto;height: auto;font-size: 14px;background-color: transparent;color: #ffffff;border: none;overflow: auto;"><script src="https://widgets.scoreaxis.com/api/football/league-table/623226651944015a9f657040?widgetId=9dfdmnrbjujt&lang=en&teamLogo=1&tableLines=0&homeAway=1&header=1&position=1&goals=1&gamesCount=1&diff=1&winCount=1&drawCount=1&loseCount=1&lastGames=1&points=1&teamsLimit=all&links=1&font=heebo&fontSize=14&rowDensity=100&widgetWidth=auto&widgetHeight=auto&bodyColor=%2301152a&textColor=%23ffffff&linkColor=%23ffffff&borderColor=rgba(255,255,255,0.1)&tabColor=%2301152a" async></script><div class="widget-main-link" style="padding: 6px 12px;font-weight: 500;display:none;">Live data by <a href="https://www.scoreaxis.com/" style="color: inherit;">Scoreaxis</a></div></div>`;
             const fragmentStandings = document.createRange().createContextualFragment(rawHTMLStandings);
             standingsWidgetRef.current.appendChild(fragmentStandings);
         }
@@ -147,12 +147,12 @@ const MatchHub = () => {
     // GSAP Animation
     useEffect(() => {
         let ctx = gsap.context(() => {
-            gsap.fromTo(hubRef.current, 
-                { y: 50, opacity: 0 }, 
-                { 
-                    y: 0, 
-                    opacity: 1, 
-                    duration: 1, 
+            gsap.fromTo(hubRef.current,
+                { y: 50, opacity: 0 },
+                {
+                    y: 0,
+                    opacity: 1,
+                    duration: 1,
                     ease: "power3.out",
                     scrollTrigger: {
                         trigger: hubRef.current,
@@ -167,24 +167,24 @@ const MatchHub = () => {
     return (
         <section ref={hubRef} className="w-full bg-[#021A38] py-8 md:py-12 text-white relative z-20 shadow-2xl border-t border-white/10">
             <div className="max-w-7xl mx-auto px-4 md:px-12 flex flex-col gap-10">
-                
+
                 {/* Top Statistics Row */}
                 <div className="grid grid-cols-1 md:grid-cols-3 gap-8 items-center">
-                    
+
                     {/* Left: Last Result */}
                     <div className="flex flex-col border-b md:border-b-0 md:border-r border-white/30 pb-6 md:pb-0 md:pr-8 w-full font-sans max-w-sm mx-auto md:mx-0">
                         <div className="flex w-full justify-between text-white/80 text-xs sm:text-sm mb-6 font-medium">
                             <span className="text-[#8ab4f8] drop-shadow-sm">{matchData.lastMatch.competition} <span className="text-white/50 px-1">•</span> {matchData.lastMatch.date}</span>
                             <span className="text-white font-bold drop-shadow-sm">Full-time</span>
                         </div>
-                        
+
                         <div className="flex w-full items-center justify-between px-2">
                             {/* Home Team */}
                             <div className="flex flex-col items-center gap-3 w-[80px]">
                                 <img src={matchData.lastMatch.home.logo} alt={matchData.lastMatch.home.name} className="w-12 h-12 md:w-14 md:h-14 object-contain drop-shadow-md" />
                                 <span className="font-normal text-[0.95rem] tracking-wide text-center pt-2 leading-tight">{matchData.lastMatch.home.name}</span>
                             </div>
-                            
+
                             {/* Score */}
                             <div className="flex items-center justify-center gap-3 md:gap-6">
                                 <span className="text-4xl md:text-5xl font-bold leading-none tracking-tighter drop-shadow-md">{matchData.lastMatch.score.split('-')[0]?.trim()}</span>
@@ -204,7 +204,7 @@ const MatchHub = () => {
                             <div className="flex w-full justify-between items-center text-xs sm:text-sm text-white/90 mt-8 pt-4 border-t border-white/20">
                                 <span className="font-medium drop-shadow-sm">{matchData.lastMatch.scorers.home}</span>
                                 <svg className="w-4 h-4 text-brand-gold drop-shadow-sm" viewBox="0 0 24 24" fill="currentColor">
-                                    <path d="M12 2A10 10 0 1 0 22 12 10 10 0 0 0 12 2Zm0 2a8 8 0 0 1 4.54 1.4A8.72 8.72 0 0 0 12 6.5a8.72 8.72 0 0 0-4.54-1.1A8 8 0 0 1 12 4Zm-6.57 3A8.61 8.61 0 0 1 9.8 8.1 8.71 8.71 0 0 0 10 11.5a8.7 8.7 0 0 0-4.7 1.8A8 8 0 0 1 5.43 7Zm2.27 10.6A8.7 8.7 0 0 0 11 15.5V13a8.7 8.7 0 0 0-4.2-1 8.71 8.71 0 0 0-1.8 4.6 8 8 0 0 1 2.7 1ZM12 20a8 8 0 0 1-2.5-.4 8.6 8.6 0 0 1 2.5-3.1 8.6 8.6 0 0 1 2.5 3.1A8 8 0 0 1 12 20Zm4.3-2.4a8.71 8.71 0 0 0-1.8-4.6A8.7 8.7 0 0 0 13 13v2.5a8.7 8.7 0 0 0 3.3 2.1ZM18.7 13.3A8.7 8.7 0 0 0 14 11.5a8.71 8.71 0 0 0 .2-3.4 8.61 8.61 0 0 1 4.37-1.1A8 8 0 0 1 18.7 13.3Z"/>
+                                    <path d="M12 2A10 10 0 1 0 22 12 10 10 0 0 0 12 2Zm0 2a8 8 0 0 1 4.54 1.4A8.72 8.72 0 0 0 12 6.5a8.72 8.72 0 0 0-4.54-1.1A8 8 0 0 1 12 4Zm-6.57 3A8.61 8.61 0 0 1 9.8 8.1 8.71 8.71 0 0 0 10 11.5a8.7 8.7 0 0 0-4.7 1.8A8 8 0 0 1 5.43 7Zm2.27 10.6A8.7 8.7 0 0 0 11 15.5V13a8.7 8.7 0 0 0-4.2-1 8.71 8.71 0 0 0-1.8 4.6 8 8 0 0 1 2.7 1ZM12 20a8 8 0 0 1-2.5-.4 8.6 8.6 0 0 1 2.5-3.1 8.6 8.6 0 0 1 2.5 3.1A8 8 0 0 1 12 20Zm4.3-2.4a8.71 8.71 0 0 0-1.8-4.6A8.7 8.7 0 0 0 13 13v2.5a8.7 8.7 0 0 0 3.3 2.1ZM18.7 13.3A8.7 8.7 0 0 0 14 11.5a8.71 8.71 0 0 0 .2-3.4 8.61 8.61 0 0 1 4.37-1.1A8 8 0 0 1 18.7 13.3Z" />
                                 </svg>
                                 <span className="font-medium drop-shadow-sm">{matchData.lastMatch.scorers.away}</span>
                             </div>
