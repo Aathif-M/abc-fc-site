@@ -39,6 +39,7 @@ const MatchHub = () => {
     });
 
     const [timeLeft, setTimeLeft] = useState({ d: 0, h: 0, m: 0, s: 0 });
+    const [widgetTargetDate, setWidgetTargetDate] = useState(null);
 
     // Dynamic API Fetcher
     useEffect(() => {
@@ -105,10 +106,43 @@ const MatchHub = () => {
         fetchLiveMatches();
     }, []);
 
+    const standingsWidgetRef = useRef(null);
+    const upcomingWidgetRef = useRef(null);
+
+    // Watch for Widget DOM to extract date/time
+    useEffect(() => {
+        const interval = setInterval(() => {
+            if (upcomingWidgetRef.current) {
+                const dateEl = upcomingWidgetRef.current.querySelector('#fsUpcomingDate');
+                const timeEl = upcomingWidgetRef.current.querySelector('#fsUpcomingTime');
+                
+                if (dateEl && timeEl && dateEl.textContent && timeEl.textContent) {
+                    const dateStr = dateEl.textContent.trim();
+                    const timeStr = timeEl.textContent.trim();
+                    
+                    let parts = dateStr.split(' ');
+                    if (parts.length >= 3) {
+                        let cleanDate = parts.slice(1).join(' ').replace(/(\d+)(st|nd|rd|th)/, '$1');
+                        let currentYear = new Date().getFullYear();
+                        let target = new Date(`${cleanDate} ${currentYear} ${timeStr}`);
+                        
+                        // Valid date checkout
+                        if (!isNaN(target.getTime())) {
+                            if (target < new Date()) target.setFullYear(currentYear + 1);
+                            setWidgetTargetDate(target.toISOString());
+                        }
+                    }
+                    clearInterval(interval);
+                }
+            }
+        }, 1000);
+        return () => clearInterval(interval);
+    }, []);
+
     // Countdown Timer Logic
     useEffect(() => {
         const timer = setInterval(() => {
-            const target = new Date(matchData.nextMatch.date);
+            const target = new Date(widgetTargetDate || matchData.nextMatch.date);
             const difference = +target - +new Date();
 
             if (difference > 0) {
@@ -124,9 +158,7 @@ const MatchHub = () => {
         }, 1000);
 
         return () => clearInterval(timer);
-    }, [matchData.nextMatch.date]);
-
-    const standingsWidgetRef = useRef(null);
+    }, [matchData.nextMatch.date, widgetTargetDate]);
 
     // Raw Scoreaxis Widget Execution
     useEffect(() => {
@@ -141,6 +173,36 @@ const MatchHub = () => {
             const rawHTMLStandings = `<div id="widget-9dfdmnrbjujt" class="scoreaxis-widget" style="width: auto;height: auto;font-size: 14px;background-color: transparent;color: #ffffff;border: none;overflow: auto;"><script src="https://widgets.scoreaxis.com/api/football/league-table/623226651944015a9f657040?widgetId=9dfdmnrbjujt&lang=en&teamLogo=1&tableLines=0&homeAway=1&header=1&position=1&goals=1&gamesCount=1&diff=1&winCount=1&drawCount=1&loseCount=1&lastGames=1&points=1&teamsLimit=all&links=1&font=heebo&fontSize=14&rowDensity=100&widgetWidth=auto&widgetHeight=auto&bodyColor=%2301152a&textColor=%23ffffff&linkColor=%23ffffff&borderColor=rgba(255,255,255,0.1)&tabColor=%2301152a" async></script><div class="widget-main-link" style="padding: 6px 12px;font-weight: 500;">Live data by <a href="https://www.scoreaxis.com/" style="color: inherit;">Scoreaxis</a></div></div>`;
             const fragmentStandings = document.createRange().createContextualFragment(rawHTMLStandings);
             standingsWidgetRef.current.appendChild(fragmentStandings);
+        }
+
+        if (upcomingWidgetRef.current && upcomingWidgetRef.current.children.length === 0) {
+            // Create target div
+            const fsDiv = document.createElement('div');
+            fsDiv.id = 'fs-upcoming';
+            upcomingWidgetRef.current.appendChild(fsDiv);
+
+            // Initialize queue
+            window.fsUpcomingEmbed = 'fsUpcoming';
+            window.fsUpcoming = window.fsUpcoming || function () { 
+                (window.fsUpcoming.q = window.fsUpcoming.q || []).push(arguments) 
+            };
+
+            // Clear the queue to prevent double-rendering bugs if React remounts quickly
+            if (window.fsUpcoming.q) {
+                window.fsUpcoming.q = [];
+            }
+
+            // Load script only once
+            if (!document.getElementById('fsUpcomingScript')) {
+                const script = document.createElement('script');
+                script.id = 'fsUpcomingScript';
+                script.src = 'https://cdn.footystats.org/embeds/upcoming.js';
+                script.async = true;
+                document.body.appendChild(script);
+            }
+
+            // Push our param request
+            window.fsUpcoming('params', { teamID: 220, theme: 'dark' });
         }
     }, []);
 
@@ -166,6 +228,59 @@ const MatchHub = () => {
 
     return (
         <section ref={hubRef} className="w-full bg-[#021A38] py-8 md:py-12 text-white relative z-20 shadow-2xl border-t border-white/10">
+            <style>{`
+                #fs-upcoming * {
+                    font-family: inherit;
+                }
+                #fs-upcoming {
+                    padding-bottom: 0.5rem;
+                }
+                .fs-upcoming-wrapper {
+                    background-color: transparent !important;
+                    border: none !important;
+                    box-shadow: none !important;
+                    color: white !important;
+                }
+                .fs-upcoming-header {
+                    background: transparent !important;
+                    border: none !important;
+                    padding-bottom: 0 !important;
+                }
+                .fs-upcoming-details h2 {
+                    display: none !important; /* we have Next Fixture header above already */
+                }
+                #fsUpcomingDate, #fsUpcomingTime {
+                    color: white !important;
+                    font-size: 1rem !important;
+                }
+                .fs-upcoming-details ul li {
+                    color: white !important;
+                    margin-bottom: 0.5rem !important;
+                }
+                .fs-upcoming-badges {
+                    background-color: rgba(0, 0, 0, 0.4) !important;
+                    border: 1px solid rgba(255,255,255,0.1) !important;
+                    border-radius: 0.75rem !important;
+                    padding: 1rem !important;
+                    margin-top: 1rem !important;
+                }
+                .fs-embed-icon {
+                    filter: invert(1) !important; /* Make clock and calendar icons white */
+                }
+                .fs-upcoming-link {
+                    padding-top: 10px !important;
+                    border-top: 1px solid rgba(255,255,255,0.1) !important;
+                }
+                .fs-upcoming-link a {
+                    color: white !important;
+                    opacity: 0.7 !important;
+                    text-decoration: none !important;
+                }
+                .fs-upcoming-link a:hover {
+                    opacity: 1 !important;
+                    color: #d4af37 !important;
+                }
+            `}</style>
             <div className="max-w-7xl mx-auto px-4 md:px-12 flex flex-col gap-10">
 
                 {/* Top Statistics Row */}
@@ -212,16 +327,11 @@ const MatchHub = () => {
                     </div>
 
                     {/* Center: Next Fixture */}
-                    <div className="flex flex-col items-center space-y-3">
+                    <div className="flex flex-col items-center space-y-3 w-full">
                         <span className="text-brand-gold font-anton tracking-widest text-sm uppercase">Next Fixture</span>
-                        <div className="font-bold text-xl md:text-2xl tracking-wide uppercase text-center flex flex-col items-center">
-                            <div className="flex items-center gap-3 mb-1">
-                                <img src={matchData.nextMatch.logo} alt="Opponent" className="w-8 h-8 md:w-10 md:h-10 object-contain drop-shadow-md" />
-                                <span>{matchData.nextMatch.opponent}</span>
-                            </div>
-                            <span className="text-sm font-bold text-brand-gold font-sans tracking-normal mt-1 uppercase">{matchData.nextMatch.dateLabel}</span>
-                        </div>
-                        <div className="flex gap-4 border border-white/30 bg-black/40 rounded-lg p-3 shadow-md">
+                        <div className="w-full flex justify-center bg-black/20 rounded-xl p-2 shadow-inner border border-white/10 overflow-hidden min-h-[150px] relative pointer-events-auto" ref={upcomingWidgetRef}></div>
+                        
+                        <div className="flex gap-4 border border-white/10 bg-black/40 rounded-lg p-3 shadow-md mt-2">
                             <div className="text-center min-w-[50px]">
                                 <span className="block text-2xl font-anton tracking-wider text-white">{timeLeft.d}</span>
                                 <span className="text-[0.6rem] uppercase tracking-widest text-white/80">Days</span>
