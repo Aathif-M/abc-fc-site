@@ -54,7 +54,7 @@ const Partner = () => {
                     </span>
                     {/* INSERT PRINCIPAL PARTNER LINK HERE */}
                     <a
-                        href="https://easymarkets.com"
+                        href="https://eazymarkets.com"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="block w-full hover:scale-105 transition-transform duration-300"
