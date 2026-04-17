@@ -74,7 +74,7 @@ const Squad = () => {
                         {/* Image Half */}
                         <div className="w-full md:w-1/2 h-1/2 md:h-full relative overflow-hidden group">
                             <div className="absolute inset-0 bg-gradient-to-t md:bg-gradient-to-r from-brand-navy via-transparent to-transparent z-10" />
-                            <img
+                            <img loading="lazy"
                                 src={player.img}
                                 alt={player.name}
                                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-out scale-110 group-hover:scale-100"

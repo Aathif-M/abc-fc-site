@@ -67,7 +67,7 @@ const About = () => {
                     {/* Item 1 - Big Image */}
                     <div className="lg:col-span-8 aspect-video md:aspect-auto md:h-[500px] overflow-hidden group relative rounded-xl -mt-20 drop-shadow-2xl">
                         <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none" />
-                        <img
+                        <img loading="lazy"
                             src={teamsCelebrate}
                             alt="Team Celebrate"
                             className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-105"
@@ -81,7 +81,7 @@ const About = () => {
                         </p>
                         <div className="h-40 w-full overflow-hidden group relative rounded-xl drop-shadow-2xl">
                             <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none" />
-                            <img
+                            <img loading="lazy"
                                 src={historicTrophy}
                                 alt="Historic Trophy"
                                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-110"
@@ -93,7 +93,7 @@ const About = () => {
                     <div className="lg:col-span-5 md:h-[400px]">
                         <div className="h-full w-full overflow-hidden group relative rounded-xl drop-shadow-2xl">
                             <div className="absolute inset-0 bg-black/20 group-hover:bg-transparent transition-colors duration-500 z-10 pointer-events-none" />
-                            <img
+                            <img loading="lazy"
                                 src={youthAcademy}
                                 alt="Youth Academy"
                                 className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-700 ease-out group-hover:scale-105"

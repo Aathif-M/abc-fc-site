@@ -69,27 +69,22 @@ function App() {
           <main className="relative z-10 w-full">
             <div id="hero"><Hero /></div>
             
-            {/* Defer heavy operations like GSAP and full React parsing until the Preloader signals app is loaded. We avoid Suspense/Lazy to ensure DOM geometry is explicitly painted all at once for strict GSAP Pin positioning. */}
-            {isAppLoaded && (
-              <>
-                <div id="matches">
-                  <MatchHub />
-                  <Standings />
-                </div>
-                <MediaGrid />
-                <div id="news"><LatestNews /></div>
-                <Marquee />
-                <Navbar />
-                <div id="academy"><Academy /></div>
-                <div id="club"><About /></div>
-                <div id="squad"><Squad /></div>
-                <div id="fans"><Fans /></div>
-                <div id="partner">
-                  <Partner />
-                </div>
-                <div id="contact"><Contact /></div>
-              </>
-            )}
+            <div id="matches">
+              <MatchHub />
+              <Standings />
+            </div>
+            <MediaGrid />
+            <div id="news"><LatestNews /></div>
+            <Marquee />
+            <Navbar />
+            <div id="academy"><Academy /></div>
+            <div id="club"><About /></div>
+            <div id="squad"><Squad /></div>
+            <div id="fans"><Fans /></div>
+            <div id="partner">
+              <Partner />
+            </div>
+            <div id="contact"><Contact /></div>
           </main>
 
           <Footer />

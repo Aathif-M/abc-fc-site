@@ -110,7 +110,7 @@ const Fans = () => {
                         
                         <div className="relative w-full h-full z-10 flex flex-col gap-6">
                             <div className="w-[80%] h-[55%] self-end rounded-xl overflow-hidden shadow-2xl relative border-4 border-white">
-                                <img 
+                                <img loading="lazy" 
                                     src={fansPortmanRoad} 
                                     alt="Portman Road Fans" 
                                     className="parallax-img w-full h-[130%] object-cover object-center absolute top-[-15%]"
@@ -119,7 +119,7 @@ const Fans = () => {
                             </div>
                             
                             <div className="w-[70%] h-[45%] rounded-xl overflow-hidden shadow-2xl relative border-4 border-white -mt-16 z-20">
-                                <img 
+                                <img loading="lazy" 
                                     src={fansCelebration} 
                                     alt="Fans Celebration" 
                                     className="parallax-img w-full h-[130%] object-cover object-center absolute top-[-15%]"

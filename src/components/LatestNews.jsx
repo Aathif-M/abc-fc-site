@@ -105,7 +105,7 @@ const LatestNews = () => {
                     {/* Featured Article (Left - 7 cols) */}
                     <div ref={featuredRef} className="lg:col-span-7 group cursor-pointer block h-full">
                         <div className="relative w-full aspect-[4/3] overflow-hidden rounded-xl mb-6">
-                            <img 
+                            <img loading="lazy" 
                                 src={featuredNews.image} 
                                 alt={featuredNews.title} 
                                 className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
@@ -134,7 +134,7 @@ const LatestNews = () => {
                         {newsList.map((news) => (
                             <div key={news.id} className="group cursor-pointer flex gap-4 bg-white/5 hover:bg-white/10 p-4 rounded-xl transition-colors border border-white/5">
                                 <div className="w-1/3 aspect-square md:aspect-[4/3] rounded-lg overflow-hidden flex-shrink-0">
-                                    <img 
+                                    <img loading="lazy" 
                                         src={news.image} 
                                         alt={news.title} 
                                         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
