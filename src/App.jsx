@@ -1,23 +1,25 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState, Suspense, lazy } from 'react';
 import Preloader from './components/Preloader';
 import CustomCursor from './components/CustomCursor';
 import Marquee from './components/Marquee';
 import Hero from './components/Hero';
-import About from './components/About';
-import Legacy from './components/Legacy';
-import Partner from './components/Partner';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
 import SmoothScroll from './components/SmoothScroll';
 import Navbar from './components/Navbar';
-import MatchHub from './components/MatchHub';
-import MediaGrid from './components/MediaGrid';
-import LatestNews from './components/LatestNews';
-import Standings from './components/Standings';
-import Squad from './components/Squad';
-import Academy from './components/Academy';
-import Fans from './components/Fans';
+import Footer from './components/Footer';
 import ErrorBoundary from './components/ErrorBoundary';
+
+// Lazy load heavy components below the fold
+const About = lazy(() => import('./components/About'));
+const Legacy = lazy(() => import('./components/Legacy'));
+const Partner = lazy(() => import('./components/Partner'));
+const Contact = lazy(() => import('./components/Contact'));
+const MatchHub = lazy(() => import('./components/MatchHub'));
+const MediaGrid = lazy(() => import('./components/MediaGrid'));
+const LatestNews = lazy(() => import('./components/LatestNews'));
+const Standings = lazy(() => import('./components/Standings'));
+const Squad = lazy(() => import('./components/Squad'));
+const Academy = lazy(() => import('./components/Academy'));
+const Fans = lazy(() => import('./components/Fans'));
 
 // Assets
 import { getAssetPath } from './utils/getAsset';
@@ -30,6 +32,8 @@ const img6 = getAssetPath('kieran-mckenna');
 
 
 function App() {
+  const [isAppLoaded, setIsAppLoaded] = useState(false);
+
   useEffect(() => {
     const preloadImages = async () => {
       const images = [img1, img2, img3, img4, img5, img6];
@@ -43,12 +47,11 @@ function App() {
         });
       });
 
-      // Simple timeout for video or other non-criticals
-      // We can also try to fetch the video blob, but for a landing page, just ensuring images are ready is usually enough to stop layout shift.
-      // Let's add a minimum delay to ensure smooth transition
-      const minimumWait = new Promise(resolve => setTimeout(resolve, 2000));
+      // Increased minimum delay to ensure smooth transition and allow preloading of heavy modules
+      const minimumWait = new Promise(resolve => setTimeout(resolve, 3500));
 
       await Promise.all([...imagePromises, minimumWait]);
+      setIsAppLoaded(true);
     };
 
     preloadImages();
@@ -58,7 +61,7 @@ function App() {
     <ErrorBoundary>
       <div className="min-h-screen bg-black text-white selection:bg-brand-red selection:text-white">
         <CustomCursor />
-        <Preloader />
+        <Preloader isLoaded={isAppLoaded} />
 
         <div className="noise-overlay" />
         <div className="vignette-overlay" />
@@ -66,22 +69,28 @@ function App() {
         <SmoothScroll>
           <main className="relative z-10 w-full">
             <div id="hero"><Hero /></div>
-            <div id="matches">
-              <MatchHub />
-              <Standings />
-            </div>
-            <MediaGrid />
-            <div id="news"><LatestNews /></div>
-            <Marquee />
-            <Navbar />
-            <div id="academy"><Academy /></div>
-            <div id="club"><About /></div>
-            <div id="squad"><Squad /></div>
-            <div id="fans"><Fans /></div>
-            <div id="partner">
-              <Partner />
-            </div>
-            <div id="contact"><Contact /></div>
+            
+            {/* Defer heavy operations like GSAP and full React parsing until the Preloader signals app is loaded */}
+            {isAppLoaded && (
+              <Suspense fallback={<div className="h-[50vh] w-full" />}>
+                <div id="matches">
+                  <MatchHub />
+                  <Standings />
+                </div>
+                <MediaGrid />
+                <div id="news"><LatestNews /></div>
+                <Marquee />
+                <Navbar />
+                <div id="academy"><Academy /></div>
+                <div id="club"><About /></div>
+                <div id="squad"><Squad /></div>
+                <div id="fans"><Fans /></div>
+                <div id="partner">
+                  <Partner />
+                </div>
+                <div id="contact"><Contact /></div>
+              </Suspense>
+            )}
           </main>
 
           <Footer />

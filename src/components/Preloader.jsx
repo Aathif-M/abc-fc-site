@@ -1,34 +1,49 @@
 import React, { useEffect, useRef } from 'react';
 import gsap from 'gsap';
 
-const Preloader = () => {
+const Preloader = ({ isLoaded }) => {
     const containerRef = useRef(null);
     const textRef = useRef(null);
+    const pulseTl = useRef(null);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
-            const tl = gsap.timeline();
-
-            // Pulse animation for the text
-            tl.to(textRef.current, {
+            // Infinite pulse animation for the text
+            pulseTl.current = gsap.timeline({ repeat: -1, yoyo: true });
+            pulseTl.current.to(textRef.current, {
                 scale: 1.1,
                 duration: 0.8,
-                yoyo: true,
-                repeat: 2,
                 ease: "power1.inOut"
-            })
-                // Slide up animation
-                .to(containerRef.current, {
-                    y: '-100%',
-                    duration: 1.5,
-                    ease: "expo.inOut",
-                    delay: 0.2
-                });
-
+            });
         }, containerRef);
 
         return () => ctx.revert();
     }, []);
+
+    useEffect(() => {
+        if (isLoaded) {
+            const exitCtx = gsap.context(() => {
+                if (pulseTl.current) {
+                    pulseTl.current.kill();
+                }
+                
+                const exitTl = gsap.timeline();
+                exitTl.to(textRef.current, {
+                    scale: 1,
+                    duration: 0.3,
+                    ease: "power1.out"
+                }).to(containerRef.current, {
+                    y: '-100%',
+                    duration: 1.5,
+                    ease: "expo.inOut",
+                    onComplete: () => {
+                        if (containerRef.current) containerRef.current.style.display = 'none';
+                    }
+                });
+            }, containerRef);
+            return () => exitCtx.revert();
+        }
+    }, [isLoaded]);
 
     return (
         <div
@@ -46,3 +61,4 @@ const Preloader = () => {
 };
 
 export default Preloader;
+
