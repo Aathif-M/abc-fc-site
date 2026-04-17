@@ -329,7 +329,7 @@ const MatchHub = () => {
                     {/* Center: Next Fixture */}
                     <div className="flex flex-col items-center space-y-3 w-full">
                         <span className="text-brand-gold font-anton tracking-widest text-sm uppercase">Next Fixture</span>
-                        <div className="w-full flex justify-center bg-black/20 rounded-xl p-2 shadow-inner border border-white/10 overflow-hidden min-h-[150px] relative pointer-events-auto" ref={upcomingWidgetRef}></div>
+                        <div className="w-full flex justify-center bg-black/20 rounded-xl p-2 shadow-inner border border-white/10 overflow-hidden min-h-[150px] relative pointer-events-none" ref={upcomingWidgetRef}></div>
                         
                         <div className="flex gap-4 border border-white/10 bg-black/40 rounded-lg p-3 shadow-md mt-2">
                             <div className="text-center min-w-[50px]">
