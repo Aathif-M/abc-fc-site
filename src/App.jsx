@@ -1,4 +1,4 @@
-import React, { useEffect, useState, Suspense, lazy } from 'react';
+import React, { useEffect, useState } from 'react';
 import Preloader from './components/Preloader';
 import CustomCursor from './components/CustomCursor';
 import Marquee from './components/Marquee';
@@ -8,18 +8,17 @@ import Navbar from './components/Navbar';
 import Footer from './components/Footer';
 import ErrorBoundary from './components/ErrorBoundary';
 
-// Lazy load heavy components below the fold
-const About = lazy(() => import('./components/About'));
-const Legacy = lazy(() => import('./components/Legacy'));
-const Partner = lazy(() => import('./components/Partner'));
-const Contact = lazy(() => import('./components/Contact'));
-const MatchHub = lazy(() => import('./components/MatchHub'));
-const MediaGrid = lazy(() => import('./components/MediaGrid'));
-const LatestNews = lazy(() => import('./components/LatestNews'));
-const Standings = lazy(() => import('./components/Standings'));
-const Squad = lazy(() => import('./components/Squad'));
-const Academy = lazy(() => import('./components/Academy'));
-const Fans = lazy(() => import('./components/Fans'));
+// Synchronous imports to ensure GSAP ScrollTrigger measures solid DOM heights accurately
+import About from './components/About';
+import Partner from './components/Partner';
+import Contact from './components/Contact';
+import MatchHub from './components/MatchHub';
+import MediaGrid from './components/MediaGrid';
+import LatestNews from './components/LatestNews';
+import Standings from './components/Standings';
+import Squad from './components/Squad';
+import Academy from './components/Academy';
+import Fans from './components/Fans';
 
 // Assets
 import { getAssetPath } from './utils/getAsset';
@@ -70,9 +69,9 @@ function App() {
           <main className="relative z-10 w-full">
             <div id="hero"><Hero /></div>
             
-            {/* Defer heavy operations like GSAP and full React parsing until the Preloader signals app is loaded */}
+            {/* Defer heavy operations like GSAP and full React parsing until the Preloader signals app is loaded. We avoid Suspense/Lazy to ensure DOM geometry is explicitly painted all at once for strict GSAP Pin positioning. */}
             {isAppLoaded && (
-              <Suspense fallback={<div className="h-[50vh] w-full" />}>
+              <>
                 <div id="matches">
                   <MatchHub />
                   <Standings />
@@ -89,7 +88,7 @@ function App() {
                   <Partner />
                 </div>
                 <div id="contact"><Contact /></div>
-              </Suspense>
+              </>
             )}
           </main>
 
