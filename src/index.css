@@ -58,6 +58,14 @@
   background: radial-gradient(circle, transparent 50%, rgba(0, 0, 0, 0.8) 100%);
 }
 
+/* Iframe hover handling */
+body.iframe-hover * {
+    cursor: auto !important;
+}
+body.iframe-hover #custom-cursor {
+    opacity: 0 !important;
+}
+
 @theme {
   --font-anton: 'Anton', sans-serif;
   --color-brand-dark: #0a0a0a;

@@ -226,6 +226,9 @@ const MatchHub = () => {
         return () => ctx.revert();
     }, []);
 
+    const handleIframeEnter = () => document.body.classList.add('iframe-hover');
+    const handleIframeLeave = () => document.body.classList.remove('iframe-hover');
+
     return (
         <section ref={hubRef} className="w-full bg-[#021A38] py-8 md:py-12 text-white relative z-20 shadow-2xl border-t border-white/10">
             <style>{`
@@ -329,7 +332,7 @@ const MatchHub = () => {
                     {/* Center: Next Fixture */}
                     <div className="flex flex-col items-center space-y-3 w-full">
                         <span className="text-brand-gold font-anton tracking-widest text-sm uppercase">Next Fixture</span>
-                        <div className="w-full flex justify-center bg-black/20 rounded-xl p-2 shadow-inner border border-white/10 overflow-hidden min-h-[150px] relative pointer-events-none" ref={upcomingWidgetRef}></div>
+                        <div className="w-full flex justify-center bg-black/20 rounded-xl p-2 shadow-inner border border-white/10 overflow-hidden min-h-[150px] relative" onMouseEnter={handleIframeEnter} onMouseLeave={handleIframeLeave} ref={upcomingWidgetRef}></div>
                         
                         <div className="flex gap-4 border border-white/10 bg-black/40 rounded-lg p-3 shadow-md mt-2">
                             <div className="text-center min-w-[50px]">
@@ -377,7 +380,7 @@ const MatchHub = () => {
                             Match Data
                         </h3>
                         {/* Raw Scoreaxis Widget Container */}
-                        <div className="w-full bg-black/20 rounded-md p-1 shadow-inner border border-white/5 overflow-hidden pointer-events-none" ref={widgetRef}></div>
+                        <div className="w-full bg-black/20 rounded-md p-1 shadow-inner border border-white/5 overflow-hidden" onMouseEnter={handleIframeEnter} onMouseLeave={handleIframeLeave} ref={widgetRef}></div>
                     </div>
 
                     <div className="lg:col-span-7 bg-black/40 p-6 flex flex-col rounded-xl border border-white/20 shadow-lg">
@@ -385,7 +388,7 @@ const MatchHub = () => {
                             <span className="w-2 h-2 rounded-full bg-brand-gold"></span>
                             Current Standings
                         </h3>
-                        <div className="w-full flex-grow bg-black/20 rounded-md p-1 shadow-inner border border-white/5 overflow-hidden pointer-events-none" ref={standingsWidgetRef}></div>
+                        <div className="w-full flex-grow bg-black/20 rounded-md p-1 shadow-inner border border-white/5 overflow-hidden" onMouseEnter={handleIframeEnter} onMouseLeave={handleIframeLeave} ref={standingsWidgetRef}></div>
                     </div>
                 </div>
 

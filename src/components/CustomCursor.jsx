@@ -60,8 +60,9 @@ const CustomCursor = () => {
 
     return (
         <div
+            id="custom-cursor"
             ref={cursorRef}
-            className="fixed top-0 left-0 w-4 h-4 bg-white rounded-full pointer-events-none z-[10000] mix-blend-difference transform -translate-x-1/2 -translate-y-1/2"
+            className="fixed top-0 left-0 w-4 h-4 bg-white rounded-full pointer-events-none z-[10000] mix-blend-difference transform -translate-x-1/2 -translate-y-1/2 transition-opacity duration-300"
         />
     );
 };

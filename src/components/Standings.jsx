@@ -25,6 +25,9 @@ const Standings = () => {
         return () => ctx.revert();
     }, []);
 
+    const handleIframeEnter = () => document.body.classList.add('iframe-hover');
+    const handleIframeLeave = () => document.body.classList.remove('iframe-hover');
+
     return (
         <section className="bg-white py-20 px-4 md:px-12 relative z-10">
             <div ref={containerRef} className="max-w-7xl mx-auto">
@@ -38,7 +41,7 @@ const Standings = () => {
                     </div>
                 </div>
 
-                <div className="w-full overflow-hidden rounded-xl shadow-2xl border border-gray-100 min-h-[420px] pointer-events-none">
+                <div className="w-full overflow-hidden rounded-xl shadow-2xl border border-gray-100 min-h-[420px]" onMouseEnter={handleIframeEnter} onMouseLeave={handleIframeLeave}>
                     <iframe src="https://footystats.org/api/club?id=220" height="100%" width="100%" style={{ height: '420px', width: '100%' }} frameBorder="0"></iframe>
                 </div>
             </div>
