@@ -1,10 +1,47 @@
-import React, { useEffect, useRef } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import gsap from 'gsap';
 
-const Preloader = ({ isLoaded }) => {
+// Assets for preloading
+import { getAssetPath } from '../utils/getAsset';
+const img1 = getAssetPath('ipswich-team');
+const img2 = getAssetPath('marcelino-nunez');
+const img3 = getAssetPath('leif-davis');
+const img4 = getAssetPath('ipswich-legacy');
+const img5 = getAssetPath('sam-morsy');
+const img6 = getAssetPath('kieran-mckenna');
+
+const Preloader = () => {
     const containerRef = useRef(null);
     const textRef = useRef(null);
     const pulseTl = useRef(null);
+    const [isLoaded, setIsLoaded] = useState(false);
+
+    useEffect(() => {
+        // Run preload logic internally to avoid triggering App-level re-renders that break GSAP Pin Spacers
+        const preloadImages = async () => {
+            const images = [img1, img2, img3, img4, img5, img6];
+            const imagePromises = images.map((src) => {
+                return new Promise((resolve) => {
+                    const img = new Image();
+                    img.src = src;
+                    img.onload = resolve;
+                    img.onerror = resolve; // Continue even if error
+                });
+            });
+
+            // Minimum 3.5 second delay
+            const minimumWait = new Promise(resolve => setTimeout(resolve, 3500));
+
+            await Promise.all([...imagePromises, minimumWait]);
+            
+            // Wait for next tick to ensure we don't conflict with any active layout refreshes
+            setTimeout(() => {
+                setIsLoaded(true);
+            }, 50);
+        };
+
+        preloadImages();
+    }, []);
 
     useEffect(() => {
         const ctx = gsap.context(() => {
@@ -38,6 +75,8 @@ const Preloader = ({ isLoaded }) => {
                     ease: "expo.inOut",
                     onComplete: () => {
                         if (containerRef.current) containerRef.current.style.display = 'none';
+                        // Safety measure: dispatch global refresh to sync ScrollTriggers once overlay is gone
+                        window.dispatchEvent(new Event('resize'));
                     }
                 });
             }, containerRef);

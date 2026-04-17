@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import Preloader from './components/Preloader';
 import CustomCursor from './components/CustomCursor';
 import Marquee from './components/Marquee';
@@ -20,47 +20,12 @@ import Squad from './components/Squad';
 import Academy from './components/Academy';
 import Fans from './components/Fans';
 
-// Assets
-import { getAssetPath } from './utils/getAsset';
-const img1 = getAssetPath('ipswich-team');
-const img2 = getAssetPath('marcelino-nunez');
-const img3 = getAssetPath('leif-davis');
-const img4 = getAssetPath('ipswich-legacy');
-const img5 = getAssetPath('sam-morsy');
-const img6 = getAssetPath('kieran-mckenna');
-
-
 function App() {
-  const [isAppLoaded, setIsAppLoaded] = useState(false);
-
-  useEffect(() => {
-    const preloadImages = async () => {
-      const images = [img1, img2, img3, img4, img5, img6];
-
-      const imagePromises = images.map((src) => {
-        return new Promise((resolve) => {
-          const img = new Image();
-          img.src = src;
-          img.onload = resolve;
-          img.onerror = resolve; // Continue even if error
-        });
-      });
-
-      // Increased minimum delay to ensure smooth transition and allow preloading of heavy modules
-      const minimumWait = new Promise(resolve => setTimeout(resolve, 3500));
-
-      await Promise.all([...imagePromises, minimumWait]);
-      setIsAppLoaded(true);
-    };
-
-    preloadImages();
-  }, []);
-
   return (
     <ErrorBoundary>
       <div className="min-h-screen bg-black text-white selection:bg-brand-red selection:text-white">
         <CustomCursor />
-        <Preloader isLoaded={isAppLoaded} />
+        <Preloader />
 
         <div className="noise-overlay" />
         <div className="vignette-overlay" />
