@@ -31,14 +31,14 @@ const Standings = () => {
                 <div className="flex flex-col md:flex-row justify-between items-end mb-12">
                     <div>
                         <h2 className="text-brand-red font-bold uppercase tracking-widest text-sm mb-2">Live Update</h2>
-                        <h3 className="text-4xl md:text-6xl font-anton text-brand-navy">PL Standings</h3>
+                        <h3 className="text-4xl md:text-6xl font-anton text-brand-navy">Team Stats</h3>
                     </div>
                     <div className="text-brand-blue font-bold tracking-widest uppercase text-xs mt-4 md:mt-0">
                         2024/25 Season
                     </div>
                 </div>
 
-                <div className="w-full overflow-hidden rounded-xl shadow-2xl border border-gray-100 min-h-[420px]">
+                <div className="w-full overflow-hidden rounded-xl shadow-2xl border border-gray-100 min-h-[420px] pointer-events-none">
                     <iframe src="https://footystats.org/api/club?id=220" height="100%" width="100%" style={{ height: '420px', width: '100%' }} frameBorder="0"></iframe>
                 </div>
             </div>
